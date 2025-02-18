@@ -36,7 +36,7 @@ export const Navbar = () => {
           <img
             src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
             alt="Logo"
-            className="h-12 md:h-16 rounded-md"
+            className="h-12 md:h-16 rounded-md border-4 border-white"  // Added white border to the logo
           />
         </Link>
 
@@ -75,7 +75,7 @@ export const Navbar = () => {
             to="/maintenance"
             className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
           >
-            Appliance Repiar & Service
+            Appliance Repair & Service
           </Link>
 
           <Link
@@ -83,7 +83,7 @@ export const Navbar = () => {
             className="flex items-center px-2 lg:px-3 py-2 text-sm lg:text-base text-white font-medium hover:bg-white hover:text-[#0416c7] rounded-md transition-colors duration-200"
           >
             <Phone className="h-4 w-4 lg:h-5 lg:w-5 mr-2" />
-            <span className="hidden xl:inline">+917419011361</span>
+            <span className="hidden xl:inline">+917419011362</span>
           </Link>
 
           <Link
@@ -149,14 +149,14 @@ export const Navbar = () => {
                   to="/maintenance"
                   className="text-base text-white hover:text-gray-200 font-medium"
                 >
-                  Appliance Repiar & Service
+                  Appliance Repair & Service
                 </Link>
                 <Link
                   to="tel:+917419011361"
                   className="text-base text-white hover:text-gray-200 font-medium flex items-center"
                 >
                   <Phone className="h-4 w-4 mr-2" />
-                  +917419011361
+                  +917419011362
                 </Link>
                 <Link
                   to="https://wa.me/917419011361"
