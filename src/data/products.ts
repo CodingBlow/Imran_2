@@ -1,24 +1,24 @@
 import Window from "../images/WAC1.png";
-import WindowM from "../images/WAMain1.png";
+import WindowM from "../images/WAMain1M.png";
 import Window2 from "../images/WAC2.png";
 import Window3 from "../images/WAC3.png";
 import Window4 from "../images/WAC4.png";
 import ORH from "../images/ORH1.png";
-import ORHM from "../images/ORHMain1.png";
+import ORHM from "../images/ORHMain1M.png";
 import ORH2 from "../images/ORH2.png";
 import ORH3 from "../images/ORH3.png";
 import ORH4 from "../images/ORH4.png";
 import Ref from "../images/REF1.png";
-import RefM from "../images/REFMain1.png";
+import RefM from "../images/REFMain1M.png";
 import Ref2 from "../images/REF2.jpg";
 import SAC from "../images/SAC1.jpg";
-import SACM from "../images/SAmain1.png";
+import SACM from "../images/SAmain1M.png";
 import SAC2 from "../images/SAC2.png";
 import SAC3 from "../images/SAC3.jpg";
 import Geyser from "../images/GEY1.png";
-import GeyserM from "../images/GEYMain1.png";
+import GeyserM from "../images/GEYMain1M.png.jpg";
 import WM from "../images/WM1.jpg";
-import WMM from "../images/WMmain1.png";
+import WMM from "../images/WMmain1M.png";
 import WM2 from "../images/WM2.jpg";
 
 export const products = {
@@ -78,10 +78,10 @@ export const products = {
         "Customer must be present during the handover/return",
       ],
       maintenance:
-        "Repair and Maintenance of Window AC will be on Hindustan rent with free of Cost during the entire season/rented time",
+        "Repair and Maintenance of Window AC will be on Smart Eager with free of Cost during the entire season/rented time",
       terms: [
         "It is not allowed to shift the AC to another location",
-        "Customer cannot transfer Hindustan rent Items to another person",
+        "Customer cannot transfer Smart Eager Items to another person",
         "Electric sub meter charge Rs. 1,000/-, if required",
         "Extra Copper piping charge Rs. 300/- per feet if needed extra as per guide",
         "Electric power Requirement: AC 240V, with pre installed power plug of 16 Amp is must near AC installation location",
@@ -146,10 +146,10 @@ export const products = {
         "Customer must be present during the handover/return",
       ],
       maintenance:
-        "Repair and Maintenance of Split AC will be on Hindustan rent with free of Cost during the entire season/rented time",
+        "Repair and Maintenance of Split AC will be on Smart Eager with free of Cost during the entire season/rented time",
       terms: [
         "It is not allowed to shift the AC to another location",
-        "Customer cannot transfer Hindustan rent Items to another person",
+        "Customer cannot transfer Smart Eager Items to another person",
         "Electric sub meter charge Rs. 1,000/-, if required",
         "Copper piping up to 3 meters included, extra length charged at Rs. 300/- per feet",
         "Electric power Requirement: AC 240V, with pre installed power plug of 16 Amp is must near AC installation location",
@@ -214,10 +214,10 @@ export const products = {
         "Customer must be present during the handover/return",
       ],
       maintenance:
-        "Repair and Maintenance of heater will be on Hindustan rent with free of Cost during the entire season/rented time",
+        "Repair and Maintenance of heater will be on Smart Eager with free of Cost during the entire season/rented time",
       terms: [
         "It is not allowed to shift the heater to another location",
-        "Customer cannot transfer Hindustan rent Items to another person",
+        "Customer cannot transfer Smart Eager Items to another person",
         "Any damages incurred due to accidents are not acceptable",
         "Heaters are only for rent, not for sale",
         "Electric power requirement: AC 230V, with pre-installed power plug of 16 Amp near heater location",
@@ -228,7 +228,7 @@ export const products = {
   },
 
   geyser: {
-    name: "Geyser Maintainance",
+    name: "Geyser Repair",
     image: GeyserM,
     variants: {
       "15L - 20L": {
@@ -263,10 +263,10 @@ export const products = {
         "Customer must be present during the handover/return",
       ],
       maintenance:
-        "Repair and Maintenance of geyser will be on Hindustan rent with free of Cost during the entire season/rented time",
+        "Repair and Maintenance of geyser will be on Smart Eager with free of Cost during the entire season/rented time",
       terms: [
         "It is not allowed to shift the geyser to another location",
-        "Customer cannot transfer Hindustan rent Items to another person",
+        "Customer cannot transfer Smart Eager Items to another person",
         "Proper water pressure is required for operation",
         "Earth leakage circuit breaker (ELCB) is recommended",
         "Installation includes basic fitting only",
@@ -275,7 +275,7 @@ export const products = {
     },
   },
   refrigerator: {
-    name: "Refrigerator Maintainance",
+    name: "Refrigerator Repair",
     image: RefM,
     variants: {
       "150-220L": {
@@ -327,10 +327,10 @@ export const products = {
         "Customer must be present during the handover/return",
       ],
       maintenance:
-        "Repair and Maintenance of refrigerator will be on Hindustan rent with free of Cost during the entire season/rented time",
+        "Repair and Maintenance of refrigerator will be on Smart Eager with free of Cost during the entire season/rented time",
       terms: [
         "It is not allowed to shift the refrigerator to another location",
-        "Customer cannot transfer Hindustan rent Items to another person",
+        "Customer cannot transfer Smart Eager Items to another person",
         "Stabilizer will be provided if required (Rs. 500/- extra per month)",
         "Keep refrigerator in well-ventilated area",
         "24-hour power backup recommended for better performance",
@@ -339,7 +339,7 @@ export const products = {
     },
   },
   "washing-machine": {
-    name: "Washing Machine Maintainance",
+    name: "Washing Machine Repair",
     image: WMM,
     variants: {
       "semi-automatic": {
@@ -391,10 +391,10 @@ export const products = {
         "Customer must be present during the handover/return",
       ],
       maintenance:
-        "Repair and Maintenance of washing machine will be on Hindustan rent with free of Cost during the entire season/rented time",
+        "Repair and Maintenance of washing machine will be on Smart Eager with free of Cost during the entire season/rented time",
       terms: [
         "It is not allowed to shift the washing machine to another location",
-        "Customer cannot transfer Hindustan rent Items to another person",
+        "Customer cannot transfer Smart Eager Items to another person",
         "Proper water inlet and outlet required",
         "Level surface required for installation",
         "Basic installation included",

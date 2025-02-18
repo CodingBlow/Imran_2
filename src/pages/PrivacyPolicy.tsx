@@ -5,10 +5,12 @@ export const PrivacyPolicy = () => {
   return (
     <div className="container mx-auto px-4 py-24">
       <h1 className="text-4xl font-bold text-center mb-12">Privacy Policy</h1>
-      
+
       <div className="max-w-4xl mx-auto space-y-8">
         <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Information We Collect</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-primary">
+            Information We Collect
+          </h2>
           <div className="space-y-4 text-gray-700">
             <p>When you use our services, we may collect:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -22,7 +24,9 @@ export const PrivacyPolicy = () => {
         </Card>
 
         <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">How We Use Your Information</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-primary">
+            How We Use Your Information
+          </h2>
           <div className="space-y-4 text-gray-700">
             <p>We use your information to:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -36,9 +40,14 @@ export const PrivacyPolicy = () => {
         </Card>
 
         <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Information Security</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-primary">
+            Information Security
+          </h2>
           <div className="space-y-4 text-gray-700">
-            <p>We implement security measures to protect your personal information:</p>
+            <p>
+              We implement security measures to protect your personal
+              information:
+            </p>
             <ul className="list-disc list-inside space-y-2 ml-4">
               <li>Secure data storage systems</li>
               <li>Limited access to personal information</li>
@@ -49,7 +58,9 @@ export const PrivacyPolicy = () => {
         </Card>
 
         <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Information Sharing</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-primary">
+            Information Sharing
+          </h2>
           <div className="space-y-4 text-gray-700">
             <p>We may share your information with:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -57,12 +68,16 @@ export const PrivacyPolicy = () => {
               <li>Payment processors for transactions</li>
               <li>Service providers who assist our operations</li>
             </ul>
-            <p className="mt-4">We never sell your personal information to third parties.</p>
+            <p className="mt-4">
+              We never sell your personal information to third parties.
+            </p>
           </div>
         </Card>
 
         <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Your Rights</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-primary">
+            Your Rights
+          </h2>
           <div className="space-y-4 text-gray-700">
             <p>You have the right to:</p>
             <ul className="list-disc list-inside space-y-2 ml-4">
@@ -75,13 +90,18 @@ export const PrivacyPolicy = () => {
         </Card>
 
         <Card className="p-8 shadow-lg">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">Contact Us</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-primary">
+            Contact Us
+          </h2>
           <div className="space-y-4 text-gray-700">
             <p>For privacy-related inquiries, contact us at:</p>
             <ul className="list-none space-y-2">
-              <li>Email: Hindustanrent@gmail.com</li>
+              <li>Email: info.smarteager@gmail.com</li>
               <li>Phone: +91 74190 11361</li>
-              <li>Address: Gurugram, Haryana</li>
+              <li>
+                Address: Badshahpur Office Teekali-Akhlimpur Road, City-
+                Badshahpur, Haryana, Pin - 122101
+              </li>
             </ul>
           </div>
         </Card>

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -53,8 +52,14 @@ export const Maintenance = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
-    if (!formData.name || !formData.phone || !formData.address || !formData.appliance || !formData.issue) {
+
+    if (
+      !formData.name ||
+      !formData.phone ||
+      !formData.address ||
+      !formData.appliance ||
+      !formData.issue
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all required fields",
@@ -62,7 +67,7 @@ export const Maintenance = () => {
       });
       return;
     }
-  
+
     let message = `
 Maintenance Request:
 Name: ${formData.name}
@@ -71,16 +76,18 @@ Address: ${formData.address}
 Appliance: ${formData.appliance}
 Issue Description: ${formData.issue}
     `;
-  
+
     // Create a WhatsApp intent with both image and text
     if (formData.image) {
       const reader = new FileReader();
-      reader.onload = function() {
+      reader.onload = function () {
         const imageData = reader.result as string;
-        
+
         // Open WhatsApp web with the image and text
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011361&text=${encodeURIComponent(message)}&image=${encodeURIComponent(imageData)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011361&text=${encodeURIComponent(
+          message
+        )}&image=${encodeURIComponent(imageData)}`;
+        window.open(whatsappUrl, "_blank");
       };
       reader.readAsDataURL(formData.image);
     } else {
@@ -114,7 +121,7 @@ Issue Description: ${formData.issue}
           Professional Maintenance Services
         </h1>
         <p className="text-xl text-gray-600">
-          Hindustan Rent is always committed to serve the customers by providing
+          Smart Eager is always committed to serve the customers by providing
           the most affordable services
         </p>
       </div>
@@ -336,7 +343,10 @@ Issue Description: ${formData.issue}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="name" className="block text-sm font-medium mb-2">
+                  <Label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Full Name
                   </Label>
                   <Input
@@ -350,7 +360,10 @@ Issue Description: ${formData.issue}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="block text-sm font-medium mb-2">
+                  <Label
+                    htmlFor="phone"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Phone Number
                   </Label>
                   <Input
@@ -363,7 +376,10 @@ Issue Description: ${formData.issue}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="address" className="block text-sm font-medium mb-2">
+                  <Label
+                    htmlFor="address"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Service Address
                   </Label>
                   <Input
@@ -376,7 +392,10 @@ Issue Description: ${formData.issue}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="appliance" className="block text-sm font-medium mb-2">
+                  <Label
+                    htmlFor="appliance"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Select Appliance
                   </Label>
                   <Select
@@ -398,7 +417,10 @@ Issue Description: ${formData.issue}
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="issue" className="block text-sm font-medium mb-2">
+                  <Label
+                    htmlFor="issue"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Issue Description
                   </Label>
                   <Input

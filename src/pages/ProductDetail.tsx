@@ -134,17 +134,16 @@ export const ProductDetail = () => {
     const variant = selectedVariant
       ? product.variants[selectedVariant]
       : Object.values(product.variants)[0];
-  
+
     return Object.keys(variant)
       .filter((key) => key !== "image" && key !== "Per")
       .map((month) => ({
         value: month,
-        label: isNaN(Number(month)) 
-          ? month  // Keep full text for special cases like "Full Season"
-          : `${month} months`  // Add "months" suffix for numeric values
+        label: isNaN(Number(month))
+          ? month // Keep full text for special cases like "Full Season"
+          : `${month} months`, // Add "months" suffix for numeric values
       }));
   };
-  
 
   const isGeyser = id === "geyser";
 
@@ -468,7 +467,7 @@ export const ProductDetail = () => {
               >
                 <AccordionItem value="description">
                   <AccordionTrigger className="text-xl font-semibold">
-                    Description of Hindustan Rent
+                    Description of Smart Eager
                   </AccordionTrigger>
                   <AccordionContent className="space-y-4">
                     <div className="space-y-2">

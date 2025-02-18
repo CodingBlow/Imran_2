@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/hr logo copy.jpg";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +9,11 @@ export const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img src={logo} alt="Hindustan Rent Logo" className="h-12 mb-4" />
+            <img
+              src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
+              alt="Smart Eager Logo"
+              className="h-16 mb-4 ml-6"
+            />
             <p className="text-gray-300">
               Premium appliances on rent with hassle-free service and
               maintenance.
@@ -91,7 +94,6 @@ export const Footer = () => {
                   className="text-gray-300 hover:text-white"
                 >
                   Maintenance
-
                 </Link>
               </li>
             </ul>
@@ -100,10 +102,13 @@ export const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-300">
-              <li>Email: Hindustanrent@gmail.com</li>
+              <li>Email: info.smarteager@gmail.com</li>
               <li>Phone: +91 7419011361</li>
               <li>Phone: +91 7419011362</li>
-              <li>Address: Sikandarpur Ghosi ,H -Block, DLF Phase -122002</li>
+              <li>
+                Address: Badshahpur Office Teekali Road, City- Badshahpur,
+                Haryana, Pin - 122101
+              </li>
             </ul>
           </div>
         </div>
@@ -128,7 +133,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {currentYear} Hindustan Rent. All rights reserved.</p>
+          <p>&copy; {currentYear} Smart Eager. All rights reserved.</p>
           <p>
             Designed by{" "}
             <a
