@@ -36,7 +36,7 @@ export const Navbar = () => {
           <img
             src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
             alt="Logo"
-            className="h-12 md:h-16 rounded-md border-4 border-white"  // Added white border to the logo
+            className="h-12 md:h-20 rounded-md" // Added white border to the logo
           />
         </Link>
 
@@ -79,7 +79,7 @@ export const Navbar = () => {
           </Link>
 
           <Link
-            to="tel:+917419011361"
+            to="tel:+917419011362"
             className="flex items-center px-2 lg:px-3 py-2 text-sm lg:text-base text-white font-medium hover:bg-white hover:text-[#0416c7] rounded-md transition-colors duration-200"
           >
             <Phone className="h-4 w-4 lg:h-5 lg:w-5 mr-2" />
@@ -87,7 +87,7 @@ export const Navbar = () => {
           </Link>
 
           <Link
-            to="https://wa.me/917419011361"
+            to="https://wa.me/917419011362"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0"
@@ -152,14 +152,14 @@ export const Navbar = () => {
                   Appliance Repair & Service
                 </Link>
                 <Link
-                  to="tel:+917419011361"
+                  to="tel:+917419011362"
                   className="text-base text-white hover:text-gray-200 font-medium flex items-center"
                 >
                   <Phone className="h-4 w-4 mr-2" />
                   +917419011362
                 </Link>
                 <Link
-                  to="https://wa.me/917419011361"
+                  to="https://wa.me/917419011362"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base text-white hover:text-gray-200 font-medium"

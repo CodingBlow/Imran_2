@@ -12,7 +12,7 @@ export const Footer = () => {
             <img
               src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
               alt="Smart Eager Logo"
-              className="h-16 mb-4 ml-6"
+              className="h-20 mb-4 ml-6"
             />
             <p className="text-gray-300">
               Premium appliances on rent with hassle-free service and
@@ -103,11 +103,11 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-300">
               <li>Email: info.smarteager@gmail.com</li>
-              <li>Phone: +91 7419011361</li>
               <li>Phone: +91 7419011362</li>
+              <li>Phone: +91 7419011361</li>
               <li>
                 Address: Badshahpur Office Teekali Road, City- Badshahpur,
-                Haryana, Pin - 122101
+                Haryana, 122101
               </li>
             </ul>
           </div>
@@ -116,19 +116,18 @@ export const Footer = () => {
         <div className="mt-8 pt-8 text-gray-300">
           <h4 className="text-lg font-semibold mb-4">Service Areas</h4>
           <p className="text-sm leading-relaxed">
-            Our Service areas include: Sector 24, Sector 25, Sector 25A, Sector
-            26, Sector 26A, Sector 27, Sector 28, Sector 30, Sector 31, Sector
-            32, Sector 33, Sector 38, Sector 39, Sector 40, Sector 41, Sector
-            42, Sector 43, Sector 44, Sector 45, Sector 46, Sector 47, Sector
-            48, Sector 49, Sector 50, Sector 51, Sector 52, Sector 52A, Sector
-            53, Sector 54, Sector 55, Sector 56, Sector 57, Sector 58, Sector
-            59, Sector 60, Sector 61, Sector 62, Sector 63, Sector 63A, Sector
-            63B, Sector 64, Sector 65, Sector 66, Sector 67, Sector 67A, Sector
-            68, Sector 69, Sector 70, Sector 70A, Sector 71, Sector 72, Sector
-            73, Sector 74, Sector 77, Sector 78, Sector 79A, Sector 79B, Sector
-            80, Sikandarpur, South City DLF City, Sohna Road, Sushant Lok, Palam
-            Vihar, MG Road, South City, Ardee City, Golf Course Road, Manesar
-            and South Delhi.
+            Sector 24, Sector 25, Sector 25A, Sector 26, Sector 26A, Sector 27,
+            Sector 28, Sector 30, Sector 31, Sector 32, Sector 33, Sector 38,
+            Sector 39, Sector 40, Sector 41, Sector 42, Sector 43, Sector 44,
+            Sector 45, Sector 46, Sector 47, Sector 48, Sector 49, Sector 50,
+            Sector 51, Sector 52, Sector 52A, Sector 53, Sector 54, Sector 55,
+            Sector 56, Sector 57, Sector 58, Sector 59, Sector 60, Sector 61,
+            Sector 62, Sector 63, Sector 63A, Sector 63B, Sector 64, Sector 65,
+            Sector 66, Sector 67, Sector 67A, Sector 68, Sector 69, Sector 70,
+            Sector 70A, Sector 71, Sector 72, Sector 73, Sector 74 Additional
+            Serve Locations Sikandarpur, South City ,DLF City, Sushant Lok,
+            Palam Vihar, MG Road, Ardee City, Golf Course Road, Sohna Road, or
+            North Sohna area, Manesar road etc
           </p>
         </div>
 

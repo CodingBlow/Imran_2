@@ -211,7 +211,7 @@ export const ProductDetail = () => {
       `;
 
       window.open(
-        `https://wa.me/917419011361?text=${encodeURIComponent(message)}`,
+        `https://wa.me/917419011362?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     } catch (error) {
@@ -233,7 +233,7 @@ export const ProductDetail = () => {
       `;
 
       window.open(
-        `https://wa.me/917419011361?text=${encodeURIComponent(message)}`,
+        `https://wa.me/917419011362?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     }

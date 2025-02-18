@@ -1,5 +1,10 @@
-
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -33,8 +38,13 @@ export const MaintenanceDialog = ({ productName }: { productName: string }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
-    if (!formData.name || !formData.phone || !formData.address || !formData.issue) {
+
+    if (
+      !formData.name ||
+      !formData.phone ||
+      !formData.address ||
+      !formData.issue
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all required fields",
@@ -42,7 +52,7 @@ export const MaintenanceDialog = ({ productName }: { productName: string }) => {
       });
       return;
     }
-  
+
     let message = `
 ${productName} Maintenance Request:
 Name: ${formData.name}
@@ -50,18 +60,20 @@ Phone: ${formData.phone}
 Address: ${formData.address}
 Issue Description: ${formData.issue}
     `;
-  
+
     if (formData.image) {
       const reader = new FileReader();
-      reader.onload = function() {
+      reader.onload = function () {
         const imageData = reader.result as string;
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011361&text=${encodeURIComponent(message)}&image=${encodeURIComponent(imageData)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011362&text=${encodeURIComponent(
+          message
+        )}&image=${encodeURIComponent(imageData)}`;
+        window.open(whatsappUrl, "_blank");
       };
       reader.readAsDataURL(formData.image);
     } else {
       window.open(
-        `https://wa.me/917419011361?text=${encodeURIComponent(message)}`,
+        `https://wa.me/917419011362?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     }
@@ -73,9 +85,9 @@ Issue Description: ${formData.issue}
       issue: "",
       image: null,
     });
-    
+
     setOpen(false);
-    
+
     toast({
       title: "Success",
       description: "Your maintenance request has been sent successfully!",
@@ -85,7 +97,9 @@ Issue Description: ${formData.issue}
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="w-full">Maintenance</Button>
+        <Button variant="secondary" className="w-full">
+          Maintenance
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

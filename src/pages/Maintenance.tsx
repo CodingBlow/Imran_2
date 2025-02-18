@@ -84,7 +84,7 @@ Issue Description: ${formData.issue}
         const imageData = reader.result as string;
 
         // Open WhatsApp web with the image and text
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011361&text=${encodeURIComponent(
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011362&text=${encodeURIComponent(
           message
         )}&image=${encodeURIComponent(imageData)}`;
         window.open(whatsappUrl, "_blank");
@@ -93,7 +93,7 @@ Issue Description: ${formData.issue}
     } else {
       // If no image, just send the text
       window.open(
-        `https://wa.me/917419011361?text=${encodeURIComponent(message)}`,
+        `https://wa.me/917419011362?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     }
@@ -463,10 +463,10 @@ Issue Description: ${formData.issue}
             <div className="mt-6 text-center text-sm text-gray-600">
               <p>Or call us directly:</p>
               <a
-                href="tel:+917419011361"
+                href="tel:+917419011362"
                 className="text-blue-600 font-semibold hover:underline"
               >
-                +91 74190 11361
+                +91 74190 11362
               </a>
             </div>
           </CardContent>

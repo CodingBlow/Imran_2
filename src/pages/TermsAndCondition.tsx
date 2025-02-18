@@ -122,10 +122,10 @@ export const TermsAndConditions = () => {
             <p>For any queries regarding these terms, contact us at:</p>
             <ul className="list-none space-y-2">
               <li>Email: info.smarteager@gmail.com</li>
-              <li>Phone: +91 74190 11361</li>
+              <li>Phone: +91 74190 11362</li>
               <li>
                 Address: Badshahpur Office Teekali-Akhlimpur Road, City-
-                Badshahpur, Haryana, Pin - 122101
+                Badshahpur, Haryana, 122101
               </li>
             </ul>
           </div>

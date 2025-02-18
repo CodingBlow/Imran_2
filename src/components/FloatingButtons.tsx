@@ -5,7 +5,7 @@ export const FloatingButtons = () => {
   return (
     <div className="fixed bottom-4 right-4 flex flex-col gap-2 z-50">
       <a
-        href="https://wa.me/917419011361"
+        href="https://wa.me/917419011362"
         target="_blank"
         rel="noopener noreferrer"
         className="transition-transform hover:scale-110"
@@ -19,7 +19,7 @@ export const FloatingButtons = () => {
         </Button>
       </a>
       <a
-        href="tel:+917419011361"
+        href="tel:+917419011362"
         className="transition-transform hover:scale-110"
       >
         <Button
