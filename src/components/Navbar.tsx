@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isSheetOpen, setIsSheetOpen] = useState(false); // State for menu
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
@@ -36,11 +37,12 @@ export const Navbar = () => {
           <img
             src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
             alt="Logo"
-            className="h-12 md:h-20 rounded-md" // Added white border to the logo
+            className="h-12 md:h-20 rounded-md"
           />
         </Link>
 
         <div className="hidden md:flex items-center gap-2 lg:gap-4 flex-wrap justify-end flex-1">
+          {/* Desktop Menu Links */}
           <Link
             to="/"
             className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
@@ -102,13 +104,15 @@ export const Navbar = () => {
           </Link>
         </div>
 
+        {/* Mobile Menu */}
         <div className="md:hidden flex items-center">
-          <Sheet>
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="outline"
                 size="icon"
                 className="bg-white hover:bg-gray-100"
+                onClick={() => setIsSheetOpen(true)}
               >
                 <Menu className="h-5 w-5 text-[#0416c7]" />
               </Button>
@@ -118,42 +122,49 @@ export const Navbar = () => {
                 <Link
                   to="/"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   Home
                 </Link>
                 <Link
                   to="/about-us"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   About
                 </Link>
                 <Link
                   to="/product/window-ac/variants"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   Window AC
                 </Link>
                 <Link
                   to="/product/split-ac/variants"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   Split AC
                 </Link>
                 <Link
                   to="/product/room-heater/variants"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   Oil Heater
                 </Link>
                 <Link
                   to="/maintenance"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   Appliance Repair & Service
                 </Link>
                 <Link
                   to="tel:+917419011362"
                   className="text-base text-white hover:text-gray-200 font-medium flex items-center"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   <Phone className="h-4 w-4 mr-2" />
                   +917419011362
@@ -163,6 +174,7 @@ export const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-base text-white hover:text-gray-200 font-medium"
+                  onClick={() => setIsSheetOpen(false)}
                 >
                   WhatsApp
                 </Link>
