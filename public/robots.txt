@@ -1,4 +1,18 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hindustanrent.com/sitemap.xml
+# Googlebot specific rule (if needed)
+User-agent: Googlebot
+Allow: /
+
+# Allow Google Maps if it's embedded or related content
+User-agent: Googlebot
+Allow: /maps/
+
+# Additional important directories or paths
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+Sitemap: https://smarteager.com/sitemap.xml
