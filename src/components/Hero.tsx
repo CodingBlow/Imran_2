@@ -55,7 +55,7 @@ export const Hero = () => {
               {sliderTexts[currentImage]}
             </h1>
             <button className="bg-white text-blue-800 font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
-              <Link to="/home">Rent Now</Link>
+              <Link to="/">Rent Now</Link>
             </button>
           </div>
         </div>
@@ -80,7 +80,7 @@ export const Hero = () => {
               {sliderTexts[currentImage]}
             </h1>
             <button className="bg-white text-blue-800 font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
-              <Link to="/home">Rent Now</Link>
+              <Link to="/">Rent Now</Link>
             </button>
           </div>
         </div>
