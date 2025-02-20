@@ -13,7 +13,6 @@ import { Contact } from "./pages/Contact";
 import { TermsAndConditions } from "./pages/TermsAndCondition";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 
-
 import "./App.css";
 
 function App() {
@@ -30,8 +29,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        
-
       </Routes>
       <Footer />
       <FloatingButtons />
