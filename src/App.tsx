@@ -12,6 +12,7 @@ import { AboutUs } from "./pages/AboutUs";
 import { Contact } from "./pages/Contact";
 import { TermsAndConditions } from "./pages/TermsAndCondition";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { Allproducts } from "./pages/AllProducts";
 
 import "./App.css";
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/Allproducts" element={<Allproducts />} />
       </Routes>
       <Footer />
       <FloatingButtons />

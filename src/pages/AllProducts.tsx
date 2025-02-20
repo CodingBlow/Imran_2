@@ -3,9 +3,9 @@ import { products } from "@/data/products";
 import { Card, CardContent } from "@/components/ui/card";
 import React, { useRef } from "react";
 
-export const Products = () => {
+export const Allproducts = () => {
   return (
-    <section className="py-11 container mx-auto px-4" id="products">
+    <section className="container mx-auto px-4 py-16 mt-16" id="products">
       <h2 className="text-3xl font-bold text-center mb-8">Our Products</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {Object.entries(products)
