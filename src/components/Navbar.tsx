@@ -3,6 +3,7 @@ import { Menu, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Link } from "react-router-dom";
+import logo from "../images/hr logo copy.png";
 
 export const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -34,11 +35,7 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img
-            src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
-            alt="Logo"
-            className="h-12 md:h-20 rounded-md"
-          />
+          <img src={logo} alt="Logo" className="h-12 md:h-20 rounded-md" />
         </Link>
 
         <div className="hidden md:flex items-center gap-2 lg:gap-4 flex-wrap justify-end flex-1">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../images/hr logo copy.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,11 +10,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img
-              src="https://smarteager.com/static/media/Logo-Main23.482d692e32095aa7bf42.png"
-              alt="Smart Eager Logo"
-              className="h-20 mb-4 ml-6"
-            />
+            <img src={logo} alt="Smart Eager Logo" className="h-20 mb-4 ml-6" />
             <p className="text-gray-300">
               Premium appliances on rent with hassle-free service and
               maintenance.

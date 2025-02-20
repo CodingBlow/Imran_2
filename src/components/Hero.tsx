@@ -35,27 +35,56 @@ export const Hero = () => {
   ];
 
   return (
-    <div className="relative h-[80vh] w-full mt-20 overflow-hidden">
-      <div
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-          fadeIn ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.3)), url(${sliderImages[currentImage]})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center text-white">
-          <h1 className="text-5xl mb-6 font-bold drop-shadow-lg">
-            {sliderTexts[currentImage]}
-          </h1>
-          <button className="bg-white text-blue-800 font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
-            <Link to="/home/allproducts">Rent Now</Link>
-          </button>
+    <>
+      {/* Laptop View */}
+      <div className="hidden md:block relative h-[80vh] w-full mt-20 overflow-hidden">
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            fadeIn ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.3)), url(${sliderImages[currentImage]})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="text-center text-white">
+            <h1 className="text-5xl mb-6 font-bold drop-shadow-lg">
+              {sliderTexts[currentImage]}
+            </h1>
+            <button className="bg-white text-blue-800 font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
+              <Link to="/home/allproducts">Rent Now</Link>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Mobile View */}
+      <div className="md:hidden relative h-[25vh] w-full mt-10 overflow-hidden">
+        <div
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+            fadeIn ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.3)), url(${sliderImages[currentImage]})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <div className="text-center text-white">
+            <h1 className="text-3xl mb-4 font-bold drop-shadow-lg">
+              {sliderTexts[currentImage]}
+            </h1>
+            <button className="bg-white text-blue-800 font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
+              <Link to="/home/allproducts">Rent Now</Link>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
