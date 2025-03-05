@@ -43,10 +43,10 @@ export const Contact = () => {
                   +91 74190 11361
                 </a>
                 <a
-                  href="tel:+917419011362"
+                  href="tel:+919389678954"
                   className="block hover:text-primary"
                 >
-                  +91 74190 11362
+                  +91 9389678954
                 </a>
               </div>
             </div>
