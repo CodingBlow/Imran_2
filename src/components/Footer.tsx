@@ -100,7 +100,7 @@ export const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-300">
               <li>Email: info.smarteager@gmail.com</li>
-              <li>Phone: +91 7419011362</li>
+              <li>Phone: +91 7419011364</li>
               <li>Phone: +91 7419011361</li>
               <li>
                 Address: Badshahpur Office Teekali Road, City- Badshahpur,

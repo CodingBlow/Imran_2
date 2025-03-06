@@ -82,11 +82,11 @@ export const Navbar = () => {
             className="flex items-center px-2 lg:px-3 py-2 text-sm lg:text-base text-white font-medium hover:bg-white hover:text-[#0416c7] rounded-md transition-colors duration-200"
           >
             <Phone className="h-4 w-4 lg:h-5 lg:w-5 mr-2" />
-            <span className="hidden xl:inline">+917419011362</span>
+            <span className="hidden xl:inline">+917419011364</span>
           </Link>
 
           <Link
-            to="https://wa.me/917419011362"
+            to="https://wa.me/917419011364"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0"
