@@ -65,7 +65,7 @@ Issue Description: ${formData.issue}
       const reader = new FileReader();
       reader.onload = function () {
         const imageData = reader.result as string;
-        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011362&text=${encodeURIComponent(
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=917419011364&text=${encodeURIComponent(
           message
         )}&image=${encodeURIComponent(imageData)}`;
         window.open(whatsappUrl, "_blank");
@@ -73,7 +73,7 @@ Issue Description: ${formData.issue}
       reader.readAsDataURL(formData.image);
     } else {
       window.open(
-        `https://wa.me/917419011362?text=${encodeURIComponent(message)}`,
+        `https://wa.me/917419011364?text=${encodeURIComponent(message)}`,
         "_blank"
       );
     }

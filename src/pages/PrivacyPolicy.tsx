@@ -97,7 +97,7 @@ export const PrivacyPolicy = () => {
             <p>For privacy-related inquiries, contact us at:</p>
             <ul className="list-none space-y-2">
               <li>Email: info.smarteager@gmail.com</li>
-              <li>Phone: +91 74190 11362</li>
+              <li>Phone: +91 74190 11364</li>
               <li>
                 Address: Badshahpur Office Teekali-Akhlimpur Road, City-
                 Badshahpur, Haryana, 122101
