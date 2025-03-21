@@ -221,6 +221,7 @@ export const ProductDetail = () => {
   Duration: ${selectedMonth} months
   Quantity: ${quantity}
   Total Price: ₹${totalPrice}
+  Selected Variant: ${selectedVariant}
   Security Deposit: ${getSecurityDeposit()}
   Delivery Date: ${format(deliveryDate, "PPP")}
   
