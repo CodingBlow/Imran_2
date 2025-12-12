@@ -130,15 +130,6 @@ export const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
           <p>&copy; {currentYear} Smart Eager. All rights reserved.</p>
-          <p>
-            Designed by{" "}
-            <a
-              href="https://www.zuridox.com"
-              className="text-green-800 hover:underline"
-            >
-              Zuridox
-            </a>
-          </p>
         </div>
       </div>
     </footer>
