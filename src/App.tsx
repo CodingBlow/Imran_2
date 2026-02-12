@@ -13,6 +13,7 @@ import { Contact } from "./pages/Contact";
 import { TermsAndConditions } from "./pages/TermsAndCondition";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { Allproducts } from "./pages/AllProducts";
+import { AcAmcService } from "../src/pages/ac-amc-service";
 
 import "./App.css";
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/Allproducts" element={<Allproducts />} />
+        <Route path="/ac-amc-service" element={<AcAmcService />} />
       </Routes>
       <Footer />
       <FloatingButtons />

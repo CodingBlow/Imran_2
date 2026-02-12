@@ -209,179 +209,179 @@ export const products = {
     },
   },
 
-  geyser: {
-    name: "Geyser Repair",
-    image: GeyserM,
-    variants: {
-      "15L - 20L": {
-        image: Geyser,
-        "2": 2750,
-        "3": 2970,
-        "4": 3257,
-        "5": 3301,
-      },
-    },
-    description: {
-      starRating: "5 Star rated energy efficient geysers",
-      condition:
-        "Its used but looks like new condition, it will be in Excellent working condition",
-      brand:
-        "All geysers will be branded as per market. Brand and Color may vary as per stock availability",
-      payment:
-        "The Rent and Security deposit amount has to be paid in full at the time of installation",
-      paymentMode:
-        "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
-      securityDeposit:
-        "Security deposit Rs. 1,500/-(refundable) will be extra and it will be returned back at the time of pickup",
-      documentation: [
-        "Aadhar card submission must for everyone",
-        "Govt ID card, Bank statement, Company name, GST number, DL Selfie etc (Any two Id need)",
-      ],
-      delivery:
-        "Customer or their representative must be present at the agreed date and time for getting Items checked in good condition",
-      pickup: [
-        "Customer must inform us minimum 3 Days prior to pick-up",
-        "Pick-up date and time will be mutually decided",
-        "Customer must be present during the handover/return",
-      ],
-      maintenance:
-        "Repair and Maintenance of geyser will be on Smart Eager with free of Cost during the entire season/rented time",
-      terms: [
-        "It is not allowed to shift the geyser to another location",
-        "Customer cannot transfer Smart Eager Items to another person",
-        "Proper water pressure is required for operation",
-        "Earth leakage circuit breaker (ELCB) is recommended",
-        "Installation includes basic fitting only",
-        "Additional plumbing work will be charged extra",
-      ],
-    },
-  },
-  refrigerator: {
-    name: "Refrigerator Repair",
-    image: RefM,
-    variants: {
-      "150-220L": {
-        image: Ref,
-        "4": 4048,
-        "5": 4840,
-        "6": 5280,
-        "7": 6160,
-        "8": 7040,
-        "9": 7920,
-        "10": 8800,
-        "11": 9680,
-        "12": 10560,
-      },
-      "220-400L": {
-        image: Ref2,
-        "4": 4554,
-        "5": 5445,
-        "6": 5940,
-        "7": 6930,
-        "8": 7920,
-        "9": 8910,
-        "10": 9900,
-        "11": 10890,
-        "12": 11880,
-      },
-    },
-    description: {
-      starRating: "4 & 5 Star rated energy efficient refrigerators",
-      condition:
-        "Its used but looks like new condition, it will be in Excellent working condition",
-      brand:
-        "All refrigerators will be branded as per market. Brand and Color may vary as per stock availability",
-      payment:
-        "The Rent and Security deposit amount has to be paid in full at the time of delivery",
-      paymentMode:
-        "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
-      securityDeposit:
-        "Security deposit Rs. 2,000/-(refundable) will be extra and it will be returned back at the time of pickup",
-      documentation: [
-        "Aadhar card submission must for everyone",
-        "Govt ID card, Bank statement, Company name, GST number, DL Selfie etc (Any two Id need)",
-      ],
-      delivery:
-        "Customer or their representative must be present at the agreed date and time for getting Items checked in good condition",
-      pickup: [
-        "Customer must inform us minimum 3 Days prior to pick-up",
-        "Pick-up date and time will be mutually decided",
-        "Customer must be present during the handover/return",
-      ],
-      maintenance:
-        "Repair and Maintenance of refrigerator will be on Smart Eager with free of Cost during the entire season/rented time",
-      terms: [
-        "It is not allowed to shift the refrigerator to another location",
-        "Customer cannot transfer Smart Eager Items to another person",
-        "Stabilizer will be provided if required (Rs. 500/- extra per month)",
-        "Keep refrigerator in well-ventilated area",
-        "24-hour power backup recommended for better performance",
-        "Level surface required for installation",
-      ],
-    },
-  },
-  "washing-machine": {
-    name: "Washing Machine Repair",
-    image: WMM,
-    variants: {
-      "semi-automatic": {
-        image: WM,
-        "4": 3542,
-        "5": 4235,
-        "6": 4620,
-        "7": 5390,
-        "8": 6160,
-        "9": 6930,
-        "10": 7700,
-        "11": 8470,
-        "12": 9240,
-      },
-      "fully-automatic": {
-        image: WM2,
-        "4": 3795,
-        "5": 4538,
-        "6": 4950,
-        "7": 5775,
-        "8": 6600,
-        "9": 7425,
-        "10": 8250,
-        "11": 9075,
-        "12": 9900,
-      },
-    },
-    description: {
-      starRating: "4 & 5 Star rated energy efficient washing machines",
-      condition:
-        "Its used but looks like new condition, it will be in Excellent working condition",
-      brand:
-        "All washing machines will be branded as per market. Brand and Color may vary as per stock availability",
-      payment:
-        "The Rent and Security deposit amount has to be paid in full at the time of delivery",
-      paymentMode:
-        "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
-      securityDeposit:
-        "Security deposit Rs. 2,000/-(refundable) will be extra and it will be returned back at the time of pickup",
-      documentation: [
-        "Aadhar card submission must for everyone",
-        "Govt ID card, Bank statement, Company name, GST number, DL Selfie etc (Any two Id need)",
-      ],
-      delivery:
-        "Customer or their representative must be present at the agreed date and time for getting Items checked in good condition",
-      pickup: [
-        "Customer must inform us minimum 3 Days prior to pick-up",
-        "Pick-up date and time will be mutually decided",
-        "Customer must be present during the handover/return",
-      ],
-      maintenance:
-        "Repair and Maintenance of washing machine will be on Smart Eager with free of Cost during the entire season/rented time",
-      terms: [
-        "It is not allowed to shift the washing machine to another location",
-        "Customer cannot transfer Smart Eager Items to another person",
-        "Proper water inlet and outlet required",
-        "Level surface required for installation",
-        "Basic installation included",
-        "Additional plumbing work will be charged extra",
-      ],
-    },
-  },
+  // geyser: {
+  //   name: "Geyser Repair",
+  //   image: GeyserM,
+  //   variants: {
+  //     "15L - 20L": {
+  //       image: Geyser,
+  //       "2": 2750,
+  //       "3": 2970,
+  //       "4": 3257,
+  //       "5": 3301,
+  //     },
+  //   },
+  //   description: {
+  //     starRating: "5 Star rated energy efficient geysers",
+  //     condition:
+  //       "Its used but looks like new condition, it will be in Excellent working condition",
+  //     brand:
+  //       "All geysers will be branded as per market. Brand and Color may vary as per stock availability",
+  //     payment:
+  //       "The Rent and Security deposit amount has to be paid in full at the time of installation",
+  //     paymentMode:
+  //       "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
+  //     securityDeposit:
+  //       "Security deposit Rs. 1,500/-(refundable) will be extra and it will be returned back at the time of pickup",
+  //     documentation: [
+  //       "Aadhar card submission must for everyone",
+  //       "Govt ID card, Bank statement, Company name, GST number, DL Selfie etc (Any two Id need)",
+  //     ],
+  //     delivery:
+  //       "Customer or their representative must be present at the agreed date and time for getting Items checked in good condition",
+  //     pickup: [
+  //       "Customer must inform us minimum 3 Days prior to pick-up",
+  //       "Pick-up date and time will be mutually decided",
+  //       "Customer must be present during the handover/return",
+  //     ],
+  //     maintenance:
+  //       "Repair and Maintenance of geyser will be on Smart Eager with free of Cost during the entire season/rented time",
+  //     terms: [
+  //       "It is not allowed to shift the geyser to another location",
+  //       "Customer cannot transfer Smart Eager Items to another person",
+  //       "Proper water pressure is required for operation",
+  //       "Earth leakage circuit breaker (ELCB) is recommended",
+  //       "Installation includes basic fitting only",
+  //       "Additional plumbing work will be charged extra",
+  //     ],
+  //   },
+  // },
+  // refrigerator: {
+  //   name: "Refrigerator Repair",
+  //   image: RefM,
+  //   variants: {
+  //     "150-220L": {
+  //       image: Ref,
+  //       "4": 4048,
+  //       "5": 4840,
+  //       "6": 5280,
+  //       "7": 6160,
+  //       "8": 7040,
+  //       "9": 7920,
+  //       "10": 8800,
+  //       "11": 9680,
+  //       "12": 10560,
+  //     },
+  //     "220-400L": {
+  //       image: Ref2,
+  //       "4": 4554,
+  //       "5": 5445,
+  //       "6": 5940,
+  //       "7": 6930,
+  //       "8": 7920,
+  //       "9": 8910,
+  //       "10": 9900,
+  //       "11": 10890,
+  //       "12": 11880,
+  //     },
+  //   },
+  //   description: {
+  //     starRating: "4 & 5 Star rated energy efficient refrigerators",
+  //     condition:
+  //       "Its used but looks like new condition, it will be in Excellent working condition",
+  //     brand:
+  //       "All refrigerators will be branded as per market. Brand and Color may vary as per stock availability",
+  //     payment:
+  //       "The Rent and Security deposit amount has to be paid in full at the time of delivery",
+  //     paymentMode:
+  //       "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
+  //     securityDeposit:
+  //       "Security deposit Rs. 2,000/-(refundable) will be extra and it will be returned back at the time of pickup",
+  //     documentation: [
+  //       "Aadhar card submission must for everyone",
+  //       "Govt ID card, Bank statement, Company name, GST number, DL Selfie etc (Any two Id need)",
+  //     ],
+  //     delivery:
+  //       "Customer or their representative must be present at the agreed date and time for getting Items checked in good condition",
+  //     pickup: [
+  //       "Customer must inform us minimum 3 Days prior to pick-up",
+  //       "Pick-up date and time will be mutually decided",
+  //       "Customer must be present during the handover/return",
+  //     ],
+  //     maintenance:
+  //       "Repair and Maintenance of refrigerator will be on Smart Eager with free of Cost during the entire season/rented time",
+  //     terms: [
+  //       "It is not allowed to shift the refrigerator to another location",
+  //       "Customer cannot transfer Smart Eager Items to another person",
+  //       "Stabilizer will be provided if required (Rs. 500/- extra per month)",
+  //       "Keep refrigerator in well-ventilated area",
+  //       "24-hour power backup recommended for better performance",
+  //       "Level surface required for installation",
+  //     ],
+  //   },
+  // },
+  // "washing-machine": {
+  //   name: "Washing Machine Repair",
+  //   image: WMM,
+  //   variants: {
+  //     "semi-automatic": {
+  //       image: WM,
+  //       "4": 3542,
+  //       "5": 4235,
+  //       "6": 4620,
+  //       "7": 5390,
+  //       "8": 6160,
+  //       "9": 6930,
+  //       "10": 7700,
+  //       "11": 8470,
+  //       "12": 9240,
+  //     },
+  //     "fully-automatic": {
+  //       image: WM2,
+  //       "4": 3795,
+  //       "5": 4538,
+  //       "6": 4950,
+  //       "7": 5775,
+  //       "8": 6600,
+  //       "9": 7425,
+  //       "10": 8250,
+  //       "11": 9075,
+  //       "12": 9900,
+  //     },
+  //   },
+  //   description: {
+  //     starRating: "4 & 5 Star rated energy efficient washing machines",
+  //     condition:
+  //       "Its used but looks like new condition, it will be in Excellent working condition",
+  //     brand:
+  //       "All washing machines will be branded as per market. Brand and Color may vary as per stock availability",
+  //     payment:
+  //       "The Rent and Security deposit amount has to be paid in full at the time of delivery",
+  //     paymentMode:
+  //       "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
+  //     securityDeposit:
+  //       "Security deposit Rs. 2,000/-(refundable) will be extra and it will be returned back at the time of pickup",
+  //     documentation: [
+  //       "Aadhar card submission must for everyone",
+  //       "Govt ID card, Bank statement, Company name, GST number, DL Selfie etc (Any two Id need)",
+  //     ],
+  //     delivery:
+  //       "Customer or their representative must be present at the agreed date and time for getting Items checked in good condition",
+  //     pickup: [
+  //       "Customer must inform us minimum 3 Days prior to pick-up",
+  //       "Pick-up date and time will be mutually decided",
+  //       "Customer must be present during the handover/return",
+  //     ],
+  //     maintenance:
+  //       "Repair and Maintenance of washing machine will be on Smart Eager with free of Cost during the entire season/rented time",
+  //     terms: [
+  //       "It is not allowed to shift the washing machine to another location",
+  //       "Customer cannot transfer Smart Eager Items to another person",
+  //       "Proper water inlet and outlet required",
+  //       "Level surface required for installation",
+  //       "Basic installation included",
+  //       "Additional plumbing work will be charged extra",
+  //     ],
+  //   },
+  // },
 };

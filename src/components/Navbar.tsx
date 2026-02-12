@@ -3,7 +3,7 @@ import { Menu, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Link } from "react-router-dom";
-import logo from "../images/hr logo copy.png";
+import logo from "../images/LOGO.png";
 
 export const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -35,7 +35,7 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Logo" className="h-12 md:h-20 rounded-md" />
+          <img src={logo} alt="Logo" className="h-28 md:h-44 rounded-md" />
         </Link>
 
         <div className="hidden md:flex items-center gap-2 lg:gap-4 flex-wrap justify-end flex-1">
@@ -52,31 +52,30 @@ export const Navbar = () => {
           >
             About
           </Link>
-          <Link
-            to="/product/window-ac/variants"
-            className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
-          >
-            Window AC
-          </Link>
-          <Link
-            to="/product/split-ac/variants"
-            className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
-          >
-            Split AC
-          </Link>
+<Link
+  to="/product/ac/variants"
+  className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
+>
+  AC on Rent
+</Link>
           <Link
             to="/product/room-heater/variants"
             className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
           >
-            Oil Heater
+            Heater on Rent
           </Link>
           <Link
             to="/maintenance"
             className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
           >
-            Appliance Repair & Service
+            Maintenance
           </Link>
-
+<Link
+            to="/ac-amc-service"
+            className="px-2 lg:px-3 py-2 text-sm lg:text-base text-white hover:bg-white hover:text-[#0416c7] font-medium rounded-md transition-colors duration-200"
+          >
+            AC AMC Service
+          </Link>
           <Link
             to="tel:+917419011364"
             className="flex items-center px-2 lg:px-3 py-2 text-sm lg:text-base text-white font-medium hover:bg-white hover:text-[#0416c7] rounded-md transition-colors duration-200"
@@ -130,20 +129,13 @@ export const Navbar = () => {
                 >
                   About
                 </Link>
-                <Link
-                  to="/product/window-ac/variants"
-                  className="text-base text-white hover:text-gray-200 font-medium"
-                  onClick={() => setIsSheetOpen(false)}
-                >
-                  Window AC
-                </Link>
-                <Link
-                  to="/product/split-ac/variants"
-                  className="text-base text-white hover:text-gray-200 font-medium"
-                  onClick={() => setIsSheetOpen(false)}
-                >
-                  Split AC
-                </Link>
+        <Link
+  to="/product/ac/variants"
+  className="text-base text-white hover:text-gray-200 font-medium"
+  onClick={() => setIsSheetOpen(false)}
+>
+  AC on Rent
+</Link>
                 <Link
                   to="/product/room-heater/variants"
                   className="text-base text-white hover:text-gray-200 font-medium"

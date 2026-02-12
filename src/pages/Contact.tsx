@@ -24,10 +24,10 @@ export const Contact = () => {
               <div>
                 <p className="font-medium text-gray-700">Email Address</p>
                 <a
-                  href="mailto: info.smarteager@gmail.com"
+                  href="mailto: info@smarteager.com "
                   className="text-primary hover:underline"
                 >
-                  info.smarteager@gmail.com
+                  info@smarteager.com 
                 </a>
               </div>
             </div>
@@ -68,13 +68,48 @@ export const Contact = () => {
 
             <div className="flex items-center gap-3">
               <FaMapMarkerAlt className="text-primary text-xl" />
-              <div>
-                <p className="font-medium text-gray-700">Location</p>
-                <p>
-                  Badshahpur Office Teekali-Akhlimpur Road, City- Badshahpur,
-                  Haryana, Pin - 122101
-                </p>
-              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+  <h4 className="text-xl font-semibold mb-6 text-gray-800">
+    Contact Us
+  </h4>
+
+  <ul className="space-y-5 text-gray-600 text-sm">
+
+    <li className="flex items-start gap-3">
+      <span className="text-blue-600 mt-1">📧</span>
+      <span>info@smarteager.com</span>
+    </li>
+
+    <li className="flex items-start gap-3">
+      <span className="text-green-600 mt-1">📞</span>
+      <div>
+        <p>+91 7419011364</p>
+        <p>+91 7419011361</p>
+      </div>
+    </li>
+
+    <li className="flex items-start gap-3">
+      <span className="text-red-600 mt-1">📍</span>
+      <div className="space-y-3">
+        <p>
+          <span className="font-semibold text-gray-800">Head Office:</span><br/>
+          Phase-06, Hariom Kunj, Palwal Road, Sohna, Gurugram (HR) - 122103
+        </p>
+
+        <p>
+          <span className="font-semibold text-gray-800">Workshop-1:</span><br/>
+          Teekli Road, Noorpur Mor, City-Badshahpur, Gurugram (HR) - 122101
+        </p>
+
+        <p>
+          <span className="font-semibold text-gray-800">Workshop-2:</span><br/>
+          Phase-06, Hariom Kunj, Palwal Road, Sohna, Gurugram (HR) - 122103
+        </p>
+      </div>
+    </li>
+
+  </ul>
+</div>
             </div>
           </div>
         </Card>

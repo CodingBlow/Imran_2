@@ -97,20 +97,48 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li>Email: info.smarteager@gmail.com</li>
-              <li>Phone: +91 7419011364</li>
-              <li>Phone: +91 7419011361</li>
-              <li>
-                Address: Badshahpur Office Teekali Road, City- Badshahpur,
-                Haryana, 122101
-              </li>
-            </ul>
-          </div>
+  <h4 className="text-xl font-semibold mb-6 text-white">Contact Us</h4>
+
+  <ul className="space-y-4 text-gray-300 text-sm">
+
+    <li className="flex items-start gap-3">
+      <span className="text-blue-400 mt-1">📧</span>
+      <span>info@smarteager.com</span>
+    </li>
+
+    <li className="flex items-start gap-3">
+      <span className="text-green-400 mt-1">📞</span>
+      <div>
+        <p>+91 7419011364</p>
+        <p>+91 7419011361</p>
+      </div>
+    </li>
+
+    <li className="flex items-start gap-3">
+      <span className="text-red-400 mt-1">📍</span>
+      <div className="space-y-2">
+        <p>
+          <span className="font-semibold text-white">Head Office:</span><br/>
+          Phase-06, Hariom Kunj, Palwal Road, Sohna, Gurugram (HR) - 122103
+        </p>
+
+        <p>
+          <span className="font-semibold text-white">Workshop-1:</span><br/>
+          Teekli Road, Noorpur Mor, City-Badshahpur, Gurugram (HR) - 122101
+        </p>
+
+        <p>
+          <span className="font-semibold text-white">Workshop-2:</span><br/>
+          Phase-06, Hariom Kunj, Palwal Road, Sohna, Gurugram (HR) - 122103
+        </p>
+      </div>
+    </li>
+
+  </ul>
+</div>
         </div>
 
-        <div className="mt-8 pt-8 text-gray-300">
+        {/* <div className="mt-8 pt-8 text-gray-300">
           <h4 className="text-lg font-semibold mb-4">Service Areas</h4>
           <p className="text-sm leading-relaxed">
             Sector 24, Sector 25, Sector 25A, Sector 26, Sector 26A, Sector 27,
@@ -126,7 +154,7 @@ export const Footer = () => {
             Palam Vihar, MG Road, Ardee City, Golf Course Road, Sohna Road, or
             North Sohna area, Manesar road etc
           </p>
-        </div>
+        </div> */}
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
           <p>&copy; {currentYear} Smart Eager. All rights reserved.</p>
