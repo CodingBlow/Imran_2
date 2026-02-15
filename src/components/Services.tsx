@@ -1,90 +1,71 @@
-import { useState, useEffect } from "react";
-import { Menu, ShoppingCart, Wrench, Headset, ThumbsUp, BadgeCheck, CreditCard } from "lucide-react";
-import styled from 'styled-components';
-
-const AnimatedHeading = styled.h2`
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #2d3748;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  animation: slideLeftRight 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-
-  @keyframes slideLeftRight {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    25% {
-      transform: translateX(15px);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    75% {
-      transform: translateX(-15px);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-`;
-
+import { Wrench, Headset, ThumbsUp, BadgeCheck, CreditCard } from "lucide-react";
 
 export const Services = () => {
   const services = [
     {
       icon: Wrench,
-      title: "Free Repair and Maintenance",
+      title: "Free Repair & Maintenance",
+      description: "Expert service included",
     },
     {
       icon: Headset,
-      title: "Online Support 24/7",
+      title: "24/7 Support",
+      description: "Always here to help",
     },
     {
       icon: ThumbsUp,
-      title: "100% Customer Satisfaction",
+      title: "100% Satisfaction",
+      description: "Customer first approach",
     },
     {
       icon: BadgeCheck,
       title: "Free Installation",
+      description: "Professional setup",
     },
     {
       icon: CreditCard,
       title: "Secure Payment",
+      description: "Safe & convenient",
     },
   ];
 
   return (
-    <div className="py-5 bg-white">
-      <div className="container mx-auto px-4">
-        <AnimatedHeading>
-          We are offer to you Home Appliances on Rental service and Maintainance of appliances
-        </AnimatedHeading>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center text-center border rounded-md p-4 shadow-sm">
+    <section className="py-8 bg-white">
+      <div className="container mx-auto px-4 max-w-7xl">
+       
+        {/* Services Grid - Figma Style */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {services.map((service, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center space-y-2"
+              className="group relative bg-gradient-to-br from-white to-gray-50 p-5 rounded-2xl border border-gray-200/60 hover:border-blue-400/60 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-1 overflow-hidden"
             >
-              <service.icon className="w-8 h-8 text-blue-600" />
-              <h3 className="text-sm font-semibold text-gray-700">{service.title}</h3>
+              {/* Hover Background Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-600/0 group-hover:from-blue-500/5 group-hover:to-blue-600/5 transition-all duration-500" />
+              
+              <div className="relative flex flex-col items-center text-center space-y-3">
+                {/* Icon Container - Figma Style */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+                  <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 p-3.5 rounded-2xl group-hover:from-blue-500 group-hover:to-blue-600 transition-all duration-500 shadow-sm group-hover:shadow-lg">
+                    <service.icon className="w-7 h-7 text-blue-600 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                  </div>
+                </div>
+                
+                {/* Text Content - Figma Style */}
+                <div className="space-y-1">
+                  <h3 className="text-sm font-bold text-gray-900 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 font-medium">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };

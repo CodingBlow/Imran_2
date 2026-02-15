@@ -7,84 +7,95 @@ import SL4 from "../images/Refrigrator-Slide4.png";
 import SL5 from "../images/Repair-Nec-Slide5.jpg";
 import SL6 from "../images/Split-AC-Slide6.png";
 
-const sliderImages = [SL1, SL2, SL3, SL4, SL5, SL6];
+const SLIDES = [
+  { image: SL1, text: "Beat the Heat and go the Chill" },
+  { image: SL2, text: "Beat the chill and go the Heat" },
+  { image: SL3, text: "Cooling solutions for every home" },
+  { image: SL4, text: "Quality service at affordable prices" },
+  { image: SL5, text: "Quality service at reasonable prices!" },
+  { image: SL6, text: "We treat your home like you treat your home" },
+];
 
 export const Hero = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [fadeIn, setFadeIn] = useState(true);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setFadeIn(false);
+    const timer = setInterval(() => {
+      setIsVisible(false);
       setTimeout(() => {
-        setCurrentImage((prevImage) => (prevImage + 1) % sliderImages.length);
-        setFadeIn(true);
-      }, 500);
+        setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+        setIsVisible(true);
+      }, 400);
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
-  const sliderTexts = [
-    "Beat the Heat and go the Chill",
-    "Beat the chill and go the Heat",
-    "Cooling solutions for every home",
-    "Quality service at affordable prices",
-    "Quality service at reasonable prices!",
-    "We treat your home like you treat your home",
-  ];
+  const handleDotClick = (index: number) => {
+    setIsVisible(false);
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setIsVisible(true);
+    }, 300);
+  };
+
+  const { image, text } = SLIDES[currentSlide];
 
   return (
-    <>
-      {/* Laptop View */}
-      <div className="hidden md:block relative h-[80vh] w-full mt-20 overflow-hidden">
-        <div
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-            fadeIn ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.3)), url(${sliderImages[currentImage]})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="text-center text-white">
-            <h1 className="text-5xl mb-6 font-bold drop-shadow-lg">
-              {sliderTexts[currentImage]}
+    <section className="relative w-full mt-20 md:mt-20 h-[40vh] md:h-[80vh] overflow-hidden">
+      {/* Background Image */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-700 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 139, 0.6), rgba(0, 0, 139, 0.4)), url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-900/20" />
+
+      {/* Content */}
+      <div className="absolute inset-0 flex items-center justify-center px-4">
+        <div className="text-center text-white max-w-4xl">
+          <div className="backdrop-blur-sm bg-black/10 rounded-2xl p-4 md:p-8">
+            <h1 className="text-2xl md:text-6xl font-bold mb-3 md:mb-6 drop-shadow-2xl leading-tight">
+              {text}
             </h1>
-            <button className="bg-white text-blue-800 font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
-              <Link to="/Allproducts">Rent Now</Link>
-            </button>
+            <p className="hidden md:block text-lg mb-6 drop-shadow-lg font-medium opacity-90">
+              Smart Eager Aircon - Your Trusted Partner in Gurugram
+            </p>
+            <Link to="/product/ac/variants">
+              <button className="bg-white text-blue-800 font-bold py-2 md:py-4 px-6 md:px-10 rounded-xl shadow-2xl hover:bg-blue-800 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center gap-2 mx-auto">
+                Rent Now
+                <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Mobile View */}
-      <div className="md:hidden relative h-[25vh] w-full mt-10 overflow-hidden">
-        <div
-          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-            fadeIn ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 139, 0.5), rgba(0, 0, 139, 0.3)), url(${sliderImages[currentImage]})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className="text-center text-white">
-            <h1 className="text-3xl mb-4 font-bold drop-shadow-lg">
-              {sliderTexts[currentImage]}
-            </h1>
-            <button className="bg-white text-blue-800 font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-blue-800 hover:text-white transition-all duration-500 ease-in-out transform hover:scale-105">
-              <Link to="/Allproducts">Rent Now</Link>
-            </button>
-          </div>
-        </div>
+      {/* Slide Indicators */}
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
+        {SLIDES.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className={`h-1.5 md:h-2 rounded-full transition-all duration-300 ${
+              currentSlide === index
+                ? "w-6 md:w-8 bg-white"
+                : "w-1.5 md:w-2 bg-white/50 hover:bg-white/75"
+            }`}
+          />
+        ))}
       </div>
-    </>
+    </section>
   );
 };

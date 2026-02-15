@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { products } from "@/data/products";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export const ProductVariants = () => {
@@ -12,19 +12,36 @@ export const ProductVariants = () => {
     const splitAC = products["split-ac"];
 
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 py-6 mt-16 max-w-7xl">
 
-        <h1 className="text-3xl font-bold text-center mb-10">
+        <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">
           AC On Rent Variants
         </h1>
 
         {/* WINDOW AC */}
-        <h2 className="text-xl font-semibold mb-6">{windowAC.name}</h2>
-        <VariantSection productKey="window-ac" product={windowAC} />
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4 border-b-2 border-gray-200">
+              <span className="bg-gray-900 text-white px-4 py-2 inline-block rounded-t-md">
+                {windowAC.name}
+              </span>
+            </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <VariantSection productKey="window-ac" product={windowAC} />
+          </div>
+        </div>
 
         {/* SPLIT AC */}
-        <h2 className="text-xl font-semibold mt-12 mb-6">{splitAC.name}</h2>
-        <VariantSection productKey="split-ac" product={splitAC} />
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4 border-b-2 border-gray-200">
+              {/* You can change bg-gray-900 to bg-blue-600 here if you want it to be blue! */}
+              <span className="bg-gray-900 text-white px-4 py-2 inline-block rounded-t-md">
+                {splitAC.name}
+              </span>
+            </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <VariantSection productKey="split-ac" product={splitAC} />
+          </div>
+        </div>
 
         {/* ===== CUSTOM AC DESCRIPTION ===== */}
         <ACDescription />
@@ -38,13 +55,15 @@ export const ProductVariants = () => {
     const heater = products["room-heater"];
 
     return (
-      <div className="container mx-auto px-4 py-16 mt-16">
+      <div className="container mx-auto px-4 py-6 mt-16 max-w-7xl">
 
-        <h1 className="text-3xl font-bold mb-8">
+        <h1 className="text-3xl font-bold mb-6 text-gray-900">
           {heater.name}
         </h1>
 
-        <VariantSection productKey="room-heater" product={heater} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <VariantSection productKey="room-heater" product={heater} />
+        </div>
 
         {/* ===== CUSTOM HEATER DESCRIPTION ===== */}
         <HeaterDescription description={heater.description} />
@@ -59,99 +78,113 @@ export const ProductVariants = () => {
 
 // ================= VARIANT SECTION =================
 const VariantSection = ({ productKey, product }: any) => (
-  <div className="flex flex-wrap -mx-2">
+  <>
     {Object.entries(product.variants).map(([variant, data]: any) => {
       const prices = Object.entries(data).filter(([k]) => k !== "image");
       const minPrice = Math.min(...prices.map(([_, p]) => Number(p)));
 
       return (
-        <div key={variant} className="w-full md:w-1/3 px-2 mb-6">
-          <Card className="hover:scale-105 transition-transform">
-            <CardContent className="p-4 text-center">
+        <Card key={variant} className="group hover:shadow-xl transition-shadow duration-300 bg-white border border-gray-200">
+          <CardContent className="p-4">
+            {/* Image Container */}
+            <div className="w-full h-44 bg-gray-50 rounded-lg mb-3 flex items-center justify-center p-3">
               <img
                 src={data.image}
-                className="h-52 mx-auto object-contain"
+                alt={variant}
+                className="w-full h-full object-contain"
               />
-              <h3 className="mt-4 font-medium">{variant}</h3>
-              <p className="text-sm text-gray-600">
-                Starting from ₹{minPrice}
-              </p>
-            </CardContent>
-            <CardFooter>
-              <Link
-                to={`/product/${productKey}/buy?variant=${variant}`}
-                className="w-full"
-              >
-                <Button className="w-full">Rent Now</Button>
+            </div>
+
+            {/* Content */}
+            <div className="text-center space-y-2">
+              <h3 className="text-lg font-bold text-gray-900">{variant}</h3>
+              <div>
+                <p className="text-xs text-gray-500">Starting from</p>
+                <p className="text-xl font-bold text-gray-900">₹{minPrice}</p>
+              </div>
+              <Link to={`/product/${productKey}/buy?variant=${variant}`} className="block">
+                <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-2.5 transition-colors">
+                  Rent Now
+                </Button>
               </Link>
-            </CardFooter>
-          </Card>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
       );
     })}
-  </div>
+  </>
 );
 
 
 // ================= AC DESCRIPTION =================
 const ACDescription = () => (
-  <div className="mt-14 bg-gray-50 p-8 rounded-lg space-y-6 text-sm leading-relaxed">
+  <div className="mt-8 bg-white border border-gray-200 p-6 rounded-lg">
 
-    <h2 className="text-xl font-semibold">
-      Rental AC Advantages Include:
-    </h2>
+    <div className="grid md:grid-cols-2 gap-8">
+      
+      {/* Left Column */}
+      <div>
+        <h2 className="text-xl font-bold mb-4 text-gray-900 pb-2 border-b border-gray-200">
+          Rental AC Advantages
+        </h2>
 
-    <ul className="list-disc pl-6 space-y-3">
-      <li>
-        <strong>Lower Upfront Costs:</strong> Renting eliminates the need for a significant initial investment required to purchase and install a new AC unit, making it a budget-friendly solution.
-      </li>
+        <ul className="space-y-3 text-sm leading-relaxed text-gray-700">
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Lower Upfront Costs:</strong> Renting eliminates the need for a significant initial investment required to purchase and install a new AC unit.
+          </li>
 
-      <li>
-        <strong>Hassle-Free Maintenance and Repairs:</strong> Most rental agreements include maintenance, servicing, and repairs. The rental company is responsible for upkeep and addressing breakdowns, saving you from unexpected costs.
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Hassle-Free Maintenance:</strong> Most rental agreements include maintenance, servicing, and repairs at no extra cost.
+          </li>
 
-      <li>
-        <strong>Flexibility:</strong> You can rent an AC for the specific duration you need (e.g., just for the summer months).
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Flexibility:</strong> You can rent an AC for the specific duration you need (e.g., just for the summer months).
+          </li>
 
-      <li>
-        <strong>Access to the Latest Technology:</strong> Rental companies allow you to use modern, energy-efficient models with advanced features.
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Latest Technology:</strong> Rental companies allow you to use modern, energy-efficient models with advanced features.
+          </li>
 
-      <li>
-        <strong>Quick Installation and Support:</strong> Many providers offer prompt delivery and professional installation services, ensuring you get relief from the heat quickly and without any personal effort.
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Quick Installation:</strong> Many providers offer prompt delivery and professional installation services.
+          </li>
 
-      <li>
-        <strong>Avoids Depreciation Concerns:</strong> Unlike purchased assets which lose value over time, renting means you are not concerned about resale value.
-      </li>
-    </ul>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">No Depreciation:</strong> Unlike purchased assets, renting means you are not concerned about resale value.
+          </li>
+        </ul>
+      </div>
 
-    <h3 className="text-lg font-semibold mt-8">
-      Why Select Smart Eager Aircon for AC on Rent?
-    </h3>
+      {/* Right Column */}
+      <div>
+        <h3 className="text-xl font-bold mb-4 text-gray-900 pb-2 border-b border-gray-200">
+          Why Smart Eager Aircon?
+        </h3>
 
-    <ul className="list-disc pl-6 space-y-3">
-      <li>
-        <strong>Flexible Rental Terms:</strong> Rent for short-term or long-term periods based on your needs.
-      </li>
+        <ul className="space-y-3 text-sm leading-relaxed text-gray-700">
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Flexible Rental Terms:</strong> Rent for short-term or long-term periods based on your needs.
+          </li>
 
-      <li>
-        <strong>Affordable Pricing:</strong> Enjoy top-quality air conditioning from Smart Eager without the high upfront cost.
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Affordable Pricing:</strong> Enjoy top-quality air conditioning from Smart Eager without the high upfront cost.
+          </li>
 
-      <li>
-        <strong>Hassle-Free Installation:</strong> Quick and professional installation by Smart Eager team without bearing any transportation charge.
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Hassle-Free Installation:</strong> Quick and professional installation by Smart Eager team without transportation charge.
+          </li>
 
-      <li>
-        <strong>Free Maintenance & Repairs:</strong> Smart Eager does not take extra costs for regular maintenance, repair, and services.
-      </li>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Free Maintenance & Repairs:</strong> Smart Eager does not take extra costs for regular maintenance and services.
+          </li>
 
-      <li>
-        <strong>Extending Range of AC Units:</strong> Choose from window and split ACs based on your cooling requirements.
-      </li>
-    </ul>
+          <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+            <strong className="text-gray-900">Wide Range:</strong> Choose from window and split ACs based on your cooling requirements.
+          </li>
+        </ul>
+      </div>
+
+    </div>
 
   </div>
 );
@@ -159,55 +192,47 @@ const ACDescription = () => (
 
 // ================= HEATER DESCRIPTION =================
 const HeaterDescription = ({ description }: any) => (
-  <div className="mt-14 bg-gray-50 p-8 rounded-lg text-sm leading-relaxed space-y-6">
+  <div className="mt-8 bg-white border border-gray-200 p-6 rounded-lg space-y-5">
 
-    <h2 className="text-xl font-semibold">
-      Key Advantages of Oil-Filled Room Heaters:
+    <h2 className="text-xl font-bold text-gray-900 pb-2 border-b border-gray-200">
+      Key Advantages of Oil-Filled Room Heaters
     </h2>
 
-    <ul className="list-disc pl-6 space-y-4">
-      <li>
-        <strong>Consistent, Lasting Warmth:</strong>  
-        Because they use oil to store heat, these heaters continue to radiate warmth for a long time after being switched off, providing steady heat without constant cycling.
+    <ul className="space-y-3 text-sm leading-relaxed text-gray-700">
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Consistent, Lasting Warmth:</strong> Because they use oil to store heat, these heaters continue to radiate warmth for a long time after being switched off.
       </li>
 
-      <li>
-        <strong>Silent Operation:</strong>  
-        Lacking fans or moving parts, they operate silently, making them perfect for bedrooms, nurseries, and study rooms.
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Silent Operation:</strong> Lacking fans or moving parts, they operate silently, making them perfect for bedrooms and study rooms.
       </li>
 
-      <li>
-        <strong>Does Not Dry Out the Air:</strong>  
-        Unlike fan heaters, oil-filled radiators do not burn oxygen or significantly reduce humidity levels, which helps maintain a healthier, more comfortable environment for skin and breathing.
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Does Not Dry Out the Air:</strong> Unlike fan heaters, oil-filled radiators maintain a healthier, more comfortable environment.
       </li>
 
-      <li>
-        <strong>Energy-Efficient & Cost-Effective:</strong>  
-        They often feature thermostats that automatically turn the unit off when a specific temperature is reached, saving on electricity.
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Energy-Efficient:</strong> They often feature thermostats that automatically turn the unit off when temperature is reached.
       </li>
 
-      <li>
-        <strong>Safe for Long-Term Use:</strong>  
-        The heating element is enclosed, and the exterior surface generally does not get hot enough to cause immediate burns upon brief contact, making them safer for homes with children or pets.
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Safe for Long-Term Use:</strong> The heating element is enclosed, making them safer for homes with children or pets.
       </li>
 
-      <li>
-        <strong>Low Maintenance:</strong>  
-        The oil is permanently sealed inside, so it never needs to be refilled or replaced.
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Low Maintenance:</strong> The oil is permanently sealed inside, so it never needs to be refilled or replaced.
       </li>
 
-      <li>
-        <strong>Even Heating:</strong>  
-        The design ensures uniform heat distribution throughout the room, eliminating cold spots.
+      <li className="pl-4 border-l-2 border-gray-300 py-0.5">
+        <strong className="text-gray-900">Even Heating:</strong> The design ensures uniform heat distribution throughout the room.
       </li>
     </ul>
 
-    {/* Optional: Extra Info from products.ts if you still want it */}
     {description && (
-      <div className="mt-8 space-y-3 border-t pt-6">
-        <p><strong>Condition:</strong> {description.condition}</p>
-        <p><strong>Brand:</strong> {description.brand}</p>
-        <p><strong>Maintenance:</strong> {description.maintenance}</p>
+      <div className="mt-6 pt-4 border-t border-gray-200 space-y-1.5 text-sm text-gray-700">
+        <p><strong className="text-gray-900">Condition:</strong> {description.condition}</p>
+        <p><strong className="text-gray-900">Brand:</strong> {description.brand}</p>
+        <p><strong className="text-gray-900">Maintenance:</strong> {description.maintenance}</p>
       </div>
     )}
 

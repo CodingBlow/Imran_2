@@ -1,40 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { Send } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 import windowImg from "../images/Screenshot 2026-02-12 224233.png";
 import splitImg from "../images/AC-Repair-Slide1.jpg";
 import vrvImg from "../images/Screenshot 2026-02-12 224521.png";
 
-const telegramBotToken = "7925171133:AAHpqH3i9OE0sDKHGiW_EiKHYk7HpCcgKLI";
-const telegramChatId = "YOUR_CHAT_ID"; // Replace with your chat ID
-
-const sendToTelegram = async (plan: string) => {
-  const message = `🔔 New AMC Inquiry\n\nPlan: ${plan}\nTime: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
-  
-  try {
-    const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: telegramChatId,
-        text: message,
-      }),
-    });
-    
-    if (response.ok) {
-      alert("Request sent successfully! We'll contact you soon.");
-    } else {
-      alert("Something went wrong. Please try again.");
-    }
-  } catch (error) {
-    console.error("Error sending to Telegram:", error);
-    alert("Failed to send request. Please try again.");
-  }
-};
-
 export const AcAmcService = () => {
+  // ================= STATE MANAGEMENT =================
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    address: "",
+  });
+
+  // Open popup and set the plan the user clicked
+  const openPopup = (plan: string) => {
+    setSelectedPlan(plan);
+    setIsPopupOpen(true);
+  };
+
+  // ================= TELEGRAM LOGIC =================
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const telegramBotToken = "7925171133:AAHpqH3i9OE0sDKHGiW_EiKHYk7HpCcgKLI";
+    const telegramChatId = "YOUR_CHAT_ID"; // ⚠️ Replace with your actual Chat ID
+
+    const message = `
+🚨 *New AMC Request* 🚨
+
+*Plan:* ${selectedPlan}
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Address:* ${formData.address}
+*Time:* ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+`;
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: telegramChatId,
+          text: message,
+          parse_mode: "Markdown",
+        }),
+      });
+
+      if (response.ok) {
+        alert("Request sent successfully! We'll contact you soon.");
+        setIsPopupOpen(false); // Close the popup
+        setFormData({ name: "", phone: "", address: "" }); // Reset the form
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending to Telegram:", error);
+      alert("Failed to send request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="container mx-auto px-4 py-10 mt-16 max-w-7xl">
+    <div className="container mx-auto px-4 py-10 mt-16 max-w-7xl font-sans antialiased">
 
       {/* ================= HEADING ================= */}
       <div className="text-center mb-8">
@@ -49,7 +91,6 @@ export const AcAmcService = () => {
         </p>
       </div>
 
-
       {/* ================= PRICING SECTION ================= */}
       <div className="grid md:grid-cols-2 gap-6 mb-10">
 
@@ -63,11 +104,10 @@ export const AcAmcService = () => {
                 <span className="text-2xl font-bold text-blue-600">₹2,499</span>
               </div>
               <button
-                onClick={() => sendToTelegram("Window AC AMC Basic (1 Year) - ₹2,499")}
+                onClick={() => openPopup("Window AC AMC Basic (1 Year) - ₹2,499")}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
 
@@ -77,16 +117,14 @@ export const AcAmcService = () => {
                 <span className="text-2xl font-bold text-gray-900">₹3,299</span>
               </div>
               <button
-                onClick={() => sendToTelegram("Window AC AMC Advanced (1 Year) - ₹3,299")}
+                onClick={() => openPopup("Window AC AMC Advanced (1 Year) - ₹3,299")}
                 className="w-full bg-gray-900 hover:bg-black text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
           </div>
         </div>
-
 
         <div className="border-2 border-blue-200 p-6 rounded-xl shadow-lg bg-gradient-to-br from-white to-blue-50 hover:shadow-xl transition-shadow">
           <h2 className="text-2xl font-bold mb-5 text-blue-600">Split AC AMC</h2>
@@ -98,11 +136,10 @@ export const AcAmcService = () => {
                 <span className="text-2xl font-bold text-blue-600">₹2,999</span>
               </div>
               <button
-                onClick={() => sendToTelegram("Split AC AMC Basic (1 Year) - ₹2,999")}
+                onClick={() => openPopup("Split AC AMC Basic (1 Year) - ₹2,999")}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
 
@@ -112,18 +149,16 @@ export const AcAmcService = () => {
                 <span className="text-2xl font-bold text-gray-900">₹3,999</span>
               </div>
               <button
-                onClick={() => sendToTelegram("Split AC AMC Advanced (1 Year) - ₹3,999")}
+                onClick={() => openPopup("Split AC AMC Advanced (1 Year) - ₹3,999")}
                 className="w-full bg-gray-900 hover:bg-black text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
           </div>
         </div>
 
       </div>
-
 
       {/* ================= FEATURE TABLE ================= */}
       <div className="mb-10">
@@ -169,7 +204,6 @@ export const AcAmcService = () => {
         </div>
       </div>
 
-
       {/* ================= SERVICE CARDS WITH IMAGES ================= */}
       <div className="mb-10">
         <h2 className="text-2xl font-bold text-center mb-6">
@@ -179,62 +213,64 @@ export const AcAmcService = () => {
         <div className="grid md:grid-cols-3 gap-6">
 
           {/* Window */}
-          <div className="shadow-lg rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow">
+          <div className="shadow-lg rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow flex flex-col h-full bg-white">
             <img src={windowImg} alt="Window AMC" className="w-full h-52 object-cover" />
-            <div className="p-5">
-              <h3 className="text-lg font-bold mb-2 text-gray-900">Window AC AMC</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                High efficiency residential and commercial AC maintenance services.
-              </p>
+            <div className="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold mb-2 text-gray-900">Window AC AMC</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  High efficiency residential and commercial AC maintenance services.
+                </p>
+              </div>
               <button
-                onClick={() => sendToTelegram("Window AC AMC Service")}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                onClick={() => openPopup("Window AC AMC Service")}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
           </div>
 
           {/* Split */}
-          <div className="shadow-lg rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow">
+          <div className="shadow-lg rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow flex flex-col h-full bg-white">
             <img src={splitImg} alt="Split AMC" className="w-full h-52 object-cover" />
-            <div className="p-5">
-              <h3 className="text-lg font-bold mb-2 text-gray-900">Split AC AMC</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Complete dry and jet wash services for long life and fresh cooling.
-              </p>
+            <div className="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold mb-2 text-gray-900">Split AC AMC</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Complete dry and jet wash services for long life and fresh cooling.
+                </p>
+              </div>
               <button
-                onClick={() => sendToTelegram("Split AC AMC Service")}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                onClick={() => openPopup("Split AC AMC Service")}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
           </div>
 
           {/* VRV */}
-          <div className="shadow-lg rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow">
+          <div className="shadow-lg rounded-xl overflow-hidden border border-gray-200 hover:shadow-2xl transition-shadow flex flex-col h-full bg-white">
             <img src={vrvImg} alt="VRV AMC" className="w-full h-52 object-cover" />
-            <div className="p-5">
-              <h3 className="text-lg font-bold mb-2 text-gray-900">VRV / VRF AC AMC</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                Professional diagnosis and repair of VRV / VRF systems.
-              </p>
+            <div className="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-bold mb-2 text-gray-900">VRV / VRF AC AMC</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Professional diagnosis and repair of VRV / VRF systems.
+                </p>
+              </div>
               <button
-                onClick={() => sendToTelegram("VRV / VRF AMC Service")}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                onClick={() => openPopup("VRV / VRF AMC Service")}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
               >
-                <Send className="w-4 h-4" />
-                Rent Now
+                <Send className="w-4 h-4" /> Rent Now
               </button>
             </div>
           </div>
 
         </div>
       </div>
-
 
       {/* ================= VRF / VRV SERVICE ================= */}
       <div className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-xl mb-10 border border-red-200">
@@ -281,7 +317,6 @@ export const AcAmcService = () => {
         </div>
       </div>
 
-
       {/* ================= TERMS & CONDITIONS ================= */}
       <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
         <h2 className="text-2xl font-bold mb-4 text-gray-900">
@@ -305,6 +340,54 @@ export const AcAmcService = () => {
           <li><strong>Exclusions:</strong> Improper use, unauthorized alterations not covered.</li>
         </ol>
       </div>
+
+      {/* ================= POPUP FORM ================= */}
+      <Dialog open={isPopupOpen} onOpenChange={setIsPopupOpen}>
+        <DialogContent className="sm:max-w-md rounded-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold text-gray-900">
+              Complete Your Request
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="bg-blue-50 text-blue-800 text-sm font-medium p-3 rounded-lg border border-blue-100 mb-2">
+            Selected: {selectedPlan}
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input 
+              placeholder="Full Name" 
+              value={formData.name}
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              required 
+              className="rounded-lg border-gray-300 focus:ring-blue-600" 
+            />
+            <Input 
+              placeholder="Phone Number" 
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              required 
+              className="rounded-lg border-gray-300 focus:ring-blue-600" 
+            />
+            <Input 
+              placeholder="Full Address" 
+              value={formData.address}
+              onChange={(e) => setFormData({...formData, address: e.target.value})}
+              required 
+              className="rounded-lg border-gray-300 focus:ring-blue-600" 
+            />
+            
+            <Button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg py-6 shadow-md transition-all mt-4"
+            >
+              {isSubmitting ? "Sending..." : "Confirm & Send Request"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
 
     </div>
   );

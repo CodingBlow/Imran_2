@@ -1,7 +1,89 @@
-import React from "react";
+import React, { useState } from "react";
 import bgImage from "../images/Contact.png";
 
+const telegramBotToken = "7925171133:AAHpqH3i9OE0sDKHGiW_EiKHYk7HpCcgKLI";
+const telegramChatId = "YOUR_CHAT_ID"; // Replace with your chat ID
+
 const ContactSection: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    captcha: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const sendToTelegram = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate captcha
+    if (formData.captcha !== "11") {
+      alert("Incorrect captcha! Please try again.");
+      return;
+    }
+
+    // Validate required fields
+    if (!formData.name || !formData.phone || !formData.email) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const message = `
+🔔 New Contact Form Submission
+
+👤 Name: ${formData.name}
+📞 Phone: ${formData.phone}
+📧 Email: ${formData.email}
+💬 Message: ${formData.message || "No message"}
+
+⏰ Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+    `;
+
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: telegramChatId,
+            text: message,
+            parse_mode: "HTML",
+          }),
+        }
+      );
+
+      if (response.ok) {
+        alert("Thank you! Your message has been sent successfully. We'll contact you soon.");
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+          captcha: "",
+        });
+      } else {
+        alert("Something went wrong. Please try again or call us directly.");
+      }
+    } catch (error) {
+      console.error("Error sending to Telegram:", error);
+      alert("Failed to send message. Please try again or contact us at +91 7419011364");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section
       className="w-full bg-cover bg-left bg-no-repeat px-6 md:px-16 py-8 md:py-12"
@@ -26,30 +108,47 @@ const ContactSection: React.FC = () => {
             Fill Your Details!
           </h2>
 
-          <form className="space-y-4">
+          <form onSubmit={sendToTelegram} className="space-y-4">
             
             <div className="flex flex-col md:flex-row gap-4">
               <input
                 type="text"
-                placeholder="Name"
+                name="name"
+                placeholder="Name *"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <input
-                type="text"
-                placeholder="Phone"
+                type="tel"
+                name="phone"
+                placeholder="Phone *"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                pattern="[0-9]{10}"
+                title="Please enter a valid 10-digit phone number"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <input
               type="email"
-              placeholder="E-mail"
+              name="email"
+              placeholder="E-mail *"
+              value={formData.email}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
 
             <textarea
-              placeholder="Message"
+              name="message"
+              placeholder="Message (Optional)"
               rows={4}
+              value={formData.message}
+              onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
             ></textarea>
 
@@ -59,16 +158,25 @@ const ContactSection: React.FC = () => {
               </div>
               <input
                 type="text"
-                placeholder="Captcha"
+                name="captcha"
+                placeholder="Captcha *"
+                value={formData.captcha}
+                onChange={handleChange}
+                required
                 className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded-lg font-semibold transition"
+              disabled={isSubmitting}
+              className={`w-full py-3 rounded-lg font-semibold transition ${
+                isSubmitting
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-700 hover:bg-blue-800 text-white"
+              }`}
             >
-              Submit
+              {isSubmitting ? "Sending..." : "Submit"}
             </button>
           </form>
         </div>
