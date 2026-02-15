@@ -1,11 +1,9 @@
 {
-    "headers": [
-      {
-        "source": "/robots.txt",
-        "headers": [
-          { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
-        ]
-      }
-    ]
-  }
-  
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
