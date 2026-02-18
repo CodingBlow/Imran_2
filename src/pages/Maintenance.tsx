@@ -3,12 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { useNavigate } from "react-router-dom";
 
 // IMPORTING ICONS FOR PROFESSIONAL LOOK
 import {
@@ -28,22 +23,25 @@ import gasCharging from "../images/Gas.png";
 import vrvVrf from "../images/vrv.png";
 import bg from "../images/Hero.png";
 
-const telegramBotToken = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
-const telegramChatId = "5831969325";
+type Service = {
+  id: number;
+  name: string;
+  image: string;
+  details?: {
+    title: string;
+    steps: {
+      step: number;
+      title: string;
+      desc: string;
+    }[];
+  };
+};
 
 export const Maintenance = () => {
   const { toast } = useToast();
-  // const [isPopupOpen, setIsPopupOpen] = useState(false);
-  // const [selectedService, setSelectedService] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    address: "",
-  });
-
-  const services = [
+  const services: Service[] = [
     { id: 1, name: "AC Installation", image: acInstallation },
     { id: 2, name: "AC Servicing", image: acServicing },
     { id: 3, name: "AC Repairing", image: acRepairing },
@@ -86,127 +84,13 @@ export const Maintenance = () => {
     { id: 6, name: "VRV / VRF Maintenance", image: vrvVrf },
   ];
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<Service | null>(null);
-
-  const openPopup = (service: Service) => {
-    setSelectedService(service);
-    setIsPopupOpen(true);
-  };
-
-  type Service = {
-    id: number;
-    name: string;
-    image: string;
-    details?: {
-      title: string;
-      steps: {
-        step: number;
-        title: string;
-        desc: string;
-      }[];
-    };
-  };
-
-  // const openPopup = (serviceName: string) => {
-  //   setSelectedService(serviceName);
-  //   setFormData({
-  //     name: "",
-  //     phone: "",
-  //     address: "",
-  //   });
-  //   setIsPopupOpen(true);
-  // };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+  // ✅ Direct navigate with service params on button click — no popup
+  const handleBookService = (service: Service) => {
+    const params = new URLSearchParams({
+      service: service.name,
+      serviceId: String(service.id),
     });
-  };
-
-  const sendToTelegram = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // ✅ Service safety check (VERY IMPORTANT)
-    if (!selectedService) {
-      toast({
-        title: "Error",
-        description: "Please select a service first",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // ✅ Form validation
-    if (!formData.name || !formData.phone || !formData.address) {
-      toast({
-        title: "Error",
-        description: "Please fill in all fields",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    // ✅ Telegram-safe plain text message
-    const message =
-      "🔧 New Service Booking Request\n\n" +
-      `📋 Service: ${selectedService.name}\n` +
-      `👤 Name: ${formData.name}\n` +
-      `📞 Phone: ${formData.phone}\n` +
-      `📍 Address: ${formData.address}\n\n` +
-      `⏰ Time: ${new Date().toLocaleString("en-IN", {
-        timeZone: "Asia/Kolkata",
-      })}`;
-
-    try {
-      const response = await fetch(
-        `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            chat_id: telegramChatId,
-            text: message,
-            parse_mode: "HTML", // ✅ extra safety
-          }),
-        },
-      );
-
-      if (!response.ok) {
-        const errText = await response.text();
-        console.error("Telegram API Error:", errText);
-        throw new Error("Telegram API failed");
-      }
-
-      toast({
-        title: "Success!",
-        description:
-          "Your service request has been submitted. We'll contact you soon!",
-      });
-
-      // ✅ Reset
-      setIsPopupOpen(false);
-      setSelectedService(null);
-      setFormData({
-        name: "",
-        phone: "",
-        address: "",
-      });
-    } catch (error) {
-      console.error("Error sending to Telegram:", error);
-      toast({
-        title: "Error",
-        description: "Failed to send request. Please call us at +91 7419011364",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    navigate(`/booking-confirmation?${params.toString()}`);
   };
 
   return (
@@ -254,9 +138,9 @@ export const Maintenance = () => {
                   {service.name}
                 </h3>
 
-                {/* BUTTON — SAME AS YOU WANTED */}
+                {/* BUTTON — direct navigate, no popup */}
                 <button
-                  onClick={() => openPopup(service)}
+                  onClick={() => handleBookService(service)}
                   className="mt-auto w-full h-10 text-sm font-semibold rounded-xl
   bg-[#0416c7] hover:bg-blue-900 text-white shadow-md"
                 >
@@ -432,78 +316,6 @@ export const Maintenance = () => {
           </div>
         </div>
       </div> */}
-
-      {/* POPUP FORM */}
-      <Dialog open={isPopupOpen} onOpenChange={setIsPopupOpen}>
-        <DialogContent className="sm:max-w-md rounded-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-gray-900">
-              Schedule {selectedService?.name}
-            </DialogTitle>
-          </DialogHeader>
-
-          {/* 🔥 ONLY FOR GAS CHARGING */}
-          {selectedService?.details && (
-            <div className="mt-3 mb-4 space-y-3">
-              <h4 className="text-sm font-semibold text-gray-800">
-                {selectedService.details.title}
-              </h4>
-
-              <div className="space-y-2">
-                {selectedService.details.steps.map((item) => (
-                  <div key={item.step} className="flex gap-2">
-                    <span className="text-xs font-bold text-[#0416c7]">
-                      {item.step}.
-                    </span>
-                    <div>
-                      <p className="text-xs font-semibold text-gray-800">
-                        {item.title}
-                      </p>
-                      <p className="text-xs text-gray-600">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* FORM */}
-          <form onSubmit={sendToTelegram} className="space-y-5 mt-4">
-            <Input
-              name="name"
-              placeholder="Full Name *"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-
-            <Input
-              name="phone"
-              type="tel"
-              placeholder="Phone Number *"
-              value={formData.phone}
-              onChange={handleInputChange}
-              required
-              pattern="[0-9]{10}"
-            />
-
-            <Input
-              name="address"
-              placeholder="Service Address *"
-              value={formData.address}
-              onChange={handleInputChange}
-              required
-            />
-
-            <Button
-              type="submit"
-              className="w-full bg-[#0416c7] hover:bg-blue-800 text-white font-semibold py-6 rounded-lg"
-            >
-              Submit Service Request
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
 
       {/* PREMIUM TRUST BADGES */}
       {/* <div className="text-center py-8 bg-gray-900 text-white rounded-2xl shadow-xl mt-8">

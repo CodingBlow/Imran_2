@@ -14,6 +14,7 @@ import { TermsAndConditions } from "./pages/TermsAndCondition";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { Allproducts } from "./pages/AllProducts";
 import { AcAmcService } from "../src/pages/ac-amc-service";
+import  BookingConfirmation  from "../src/pages/Booking-Confirmation";
 
 import "./App.css";
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/Allproducts" element={<Allproducts />} />
         <Route path="/ac-amc-service" element={<AcAmcService />} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
       </Routes>
       <Footer />
       <FloatingButtons />

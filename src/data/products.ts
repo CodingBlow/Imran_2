@@ -208,7 +208,36 @@ export const products = {
       ],
     },
   },
-
+  "maintenance": {
+    name: "Maintenance",
+    image: ORH3,
+    variants: {
+      "1 Service": {
+        image: ORH3,
+        "1": 1999,
+      },
+    },
+    description: {
+      payment: "One time advance payment applicable",
+      paymentMode:
+        "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
+    },
+  },
+ "ac-amc-service": {
+    name: "AC AMC Service",
+    image: ORH3,
+    variants: {
+      "Standard AMC": {
+        image: ORH3,
+        "1": 1999,
+      },
+    },
+    description: {
+      payment: "One time advance payment applicable",
+      paymentMode:
+        "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
+    },
+  },
   // geyser: {
   //   name: "Geyser Repair",
   //   image: GeyserM,
