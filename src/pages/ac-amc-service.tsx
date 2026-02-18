@@ -124,7 +124,7 @@ export const AcAmcService = () => {
                 }
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" /> Buy Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
 
@@ -141,7 +141,7 @@ export const AcAmcService = () => {
                 }
                 className="w-full bg-gray-900 hover:bg-black text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" /> Buy Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
           </div>
@@ -166,7 +166,7 @@ export const AcAmcService = () => {
                 }
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" /> Buy Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
 
@@ -183,7 +183,7 @@ export const AcAmcService = () => {
                 }
                 className="w-full bg-gray-900 hover:bg-black text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
               >
-                <Send className="w-4 h-4" /> Buy Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
           </div>
@@ -353,7 +353,7 @@ export const AcAmcService = () => {
                 onClick={() => openPopup("Window AC AMC Service")}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
               >
-                <Send className="w-4 h-4" /> Rent Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
           </div>
@@ -379,7 +379,7 @@ export const AcAmcService = () => {
                 onClick={() => openPopup("Split AC AMC Service")}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
               >
-                <Send className="w-4 h-4" /> Rent Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
           </div>
@@ -404,7 +404,7 @@ export const AcAmcService = () => {
                 onClick={() => openPopup("VRV / VRF AMC Service")}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 mt-auto"
               >
-                <Send className="w-4 h-4" /> Rent Now
+                <Send className="w-4 h-4" /> Book Now
               </button>
             </div>
           </div>
@@ -412,7 +412,7 @@ export const AcAmcService = () => {
       </div>
 
       {/* ================= VRF / VRV SERVICE ================= */}
-      <div className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-xl mb-10 border border-red-200">
+      {/* <div className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-xl mb-10 border border-red-200">
         <h2 className="text-2xl font-bold text-red-600 mb-4">
           VRF / VRV Service
         </h2>
@@ -458,7 +458,7 @@ export const AcAmcService = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* ================= TERMS & CONDITIONS ================= */}
       <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">

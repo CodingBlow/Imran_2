@@ -51,7 +51,7 @@ export const Navbar = () => {
           <img
             src={logo}
             alt="Smart Eager Logo"
-            className="h-24 md:h-36 drop-shadow-lg"
+            className="h-20 md:h-20 drop-shadow-lg"
           />
         </Link>
 

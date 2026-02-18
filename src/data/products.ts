@@ -1,8 +1,8 @@
 import Window from "../images/WAC1.jpg";
 import WindowM from "../images/WAMain1M.png";
 import Window2 from "../images/WAC1.5.jpg";
-import Window3 from "../images/WAC2.jpg";
-import ORH from "../images/ORH1.png";
+import Window3 from "../images/WAC2.png";
+import ORH from "../images/ORH56.png";
 import ORHM from "../images/ORHMain1M.png";
 import ORH2 from "../images/ORH2.png";
 import ORH3 from "../images/ORH3.png";
@@ -208,7 +208,7 @@ export const products = {
       ],
     },
   },
-  "maintenance": {
+  maintenance: {
     name: "Maintenance",
     image: ORH3,
     variants: {
@@ -223,7 +223,7 @@ export const products = {
         "Accepted as Online Google Pay, Phonepe, UPI, Net banking and Cash etc",
     },
   },
- "ac-amc-service": {
+  "ac-amc-service": {
     name: "AC AMC Service",
     image: ORH3,
     variants: {

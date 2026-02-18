@@ -661,7 +661,7 @@ export const ProductDetail = () => {
         </Card>
 
         {/* SIMILAR PRODUCTS */}
-        <div className="mt-16 mb-10">
+        {/* <div className="mt-16 mb-10">
           <h2 className="text-2xl font-extrabold mb-8 text-gray-900 tracking-tight">
             Similar Products
           </h2>
@@ -685,7 +685,7 @@ export const ProductDetail = () => {
               </Link>
             ))}
           </div>
-        </div>
+        </div> */}
       </main>
 
       {/* ================= CHECKOUT POPUP (MODAL) ================= */}
