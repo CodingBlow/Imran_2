@@ -32,44 +32,53 @@ export const AcAmcService = () => {
   };
 
   // ================= TELEGRAM LOGIC =================
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const telegramBotToken = "7925171133:AAHpqH3i9OE0sDKHGiW_EiKHYk7HpCcgKLI";
-    const telegramChatId = "YOUR_CHAT_ID"; // ⚠️ Replace with your actual Chat ID
+    const TELEGRAM_BOT_TOKEN = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
+    const TELEGRAM_CHAT_ID = "5831969325";
 
-    const message = `
-🚨 *New AMC Request* 🚨
+    if (!selectedPlan) {
+      alert("Please select an AMC plan");
+      setIsSubmitting(false);
+      return;
+    }
 
-*Plan:* ${selectedPlan}
-*Name:* ${formData.name}
-*Phone:* ${formData.phone}
-*Address:* ${formData.address}
-*Time:* ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
-`;
+    const message =
+      "🚨 New AMC Request 🚨\n\n" +
+      `Plan: ${selectedPlan}\n` +
+      `Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
+      `Address: ${formData.address}\n` +
+      `Time: ${new Date().toLocaleString("en-IN", {
+        timeZone: "Asia/Kolkata",
+      })}`;
 
     try {
       const response = await fetch(
-        `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({
-            chat_id: telegramChatId,
+            chat_id: TELEGRAM_CHAT_ID,
             text: message,
-            parse_mode: "Markdown",
           }),
         },
       );
 
-      if (response.ok) {
-        alert("Request sent successfully! We'll contact you soon.");
-        setIsPopupOpen(false); // Close the popup
-        setFormData({ name: "", phone: "", address: "" }); // Reset the form
-      } else {
-        alert("Something went wrong. Please try again.");
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Telegram API Error:", errorText);
+        throw new Error("Telegram API failed");
       }
+
+      alert("Request sent successfully! We'll contact you soon.");
+      setIsPopupOpen(false);
+      setFormData({ name: "", phone: "", address: "" });
     } catch (error) {
       console.error("Error sending to Telegram:", error);
       alert("Failed to send request. Please try again.");

@@ -38,14 +38,21 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 backdrop-blur-sm z-50 shadow-lg transition-transform duration-300 ${
+      className={`fixed top-0 font-mono w-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 backdrop-blur-sm z-50 shadow-lg transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
-          <img src={logo} alt="Smart Eager Logo" className="h-24 md:h-36 drop-shadow-lg" />
+        <Link
+          to="/"
+          className="flex items-center hover:opacity-90 transition-opacity"
+        >
+          <img
+            src={logo}
+            alt="Smart Eager Logo"
+            className="h-24 md:h-36 drop-shadow-lg"
+          />
         </Link>
 
         {/* Desktop Menu */}

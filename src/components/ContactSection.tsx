@@ -14,7 +14,9 @@ const ContactSection: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -46,7 +48,7 @@ const ContactSection: React.FC = () => {
 📧 Email: ${formData.email}
 💬 Message: ${formData.message || "No message"}
 
-⏰ Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+⏰ Time: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}
     `;
 
     try {
@@ -60,11 +62,13 @@ const ContactSection: React.FC = () => {
             text: message,
             parse_mode: "HTML",
           }),
-        }
+        },
       );
 
       if (response.ok) {
-        alert("Thank you! Your message has been sent successfully. We'll contact you soon.");
+        alert(
+          "Thank you! Your message has been sent successfully. We'll contact you soon.",
+        );
         // Reset form
         setFormData({
           name: "",
@@ -78,7 +82,9 @@ const ContactSection: React.FC = () => {
       }
     } catch (error) {
       console.error("Error sending to Telegram:", error);
-      alert("Failed to send message. Please try again or contact us at +91 7419011364");
+      alert(
+        "Failed to send message. Please try again or contact us at +91 7419011364",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -86,30 +92,27 @@ const ContactSection: React.FC = () => {
 
   return (
     <section
-      className="w-full bg-cover bg-left bg-no-repeat px-6 md:px-16 py-8 md:py-12"
+      className="w-full bg-cover bg-left bg-no-repeat px-6 md:px-16 py-4 md:py-6"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-        
         {/* LEFT CONTENT */}
         <div className="flex-1 text-gray-900">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
-            Book Your Free AC Offer Now!
+          <h1 className="text-3xl md:text-5xl font-bold mb-2 leading-tight">
+            Fill your order at Smart Eager Aircon !
           </h1>
           <p className="text-base md:text-lg max-w-lg leading-relaxed">
-            We are here to help with all your appliance service, repair,
-            and rental needs. Whether you have questions.
+            Book Your Free Air Conditioner Offers with Smart Eager Aircon
           </p>
         </div>
 
         {/* RIGHT FORM */}
-        <div className="flex-1 bg-white/95 p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-xl">
+        <div className="flex-1 bg-white/95 p-4 md:p-5 rounded-2xl shadow-xl w-full max-w-xl">
           <h2 className="text-center text-2xl font-semibold text-blue-700 mb-6">
             Fill Your Details!
           </h2>
 
-          <form onSubmit={sendToTelegram} className="space-y-4">
-            
+          <form onSubmit={sendToTelegram} className="space-y-3">
             <div className="flex flex-col md:flex-row gap-4">
               <input
                 type="text"
@@ -180,7 +183,6 @@ const ContactSection: React.FC = () => {
             </button>
           </form>
         </div>
-
       </div>
     </section>
   );
