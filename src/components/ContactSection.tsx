@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import bgImage from "../images/Contact.png";
 
-const telegramBotToken = "7925171133:AAHpqH3i9OE0sDKHGiW_EiKHYk7HpCcgKLI";
-const telegramChatId = "YOUR_CHAT_ID"; // Replace with your chat ID
+const TELEGRAM_BOT_TOKEN = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
+const TELEGRAM_CHAT_ID = "5831969325";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -53,14 +53,13 @@ const ContactSection: React.FC = () => {
 
     try {
       const response = await fetch(
-        `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            chat_id: telegramChatId,
+            chat_id: TELEGRAM_CHAT_ID,
             text: message,
-            parse_mode: "HTML",
           }),
         },
       );

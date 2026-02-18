@@ -31,9 +31,21 @@ import {
 } from "@/components/ui/dialog";
 
 // ⚠️ NEW ICONS IMPORTED HERE
-import { 
-  CalendarIcon, Send, Minus, Plus, Star, BadgeCheck, Tag, 
-  CreditCard, ShieldCheck, FileText, Truck, Package, Wrench, FileSignature 
+import {
+  CalendarIcon,
+  Send,
+  Minus,
+  Plus,
+  Star,
+  BadgeCheck,
+  Tag,
+  CreditCard,
+  ShieldCheck,
+  FileText,
+  Truck,
+  Package,
+  Wrench,
+  FileSignature,
 } from "lucide-react";
 
 import { format } from "date-fns";
@@ -46,7 +58,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const ProductDetail = () => {
-  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(
+    null,
+  );
   const [locationError, setLocationError] = useState<string | null>(null);
 
   const { id } = useParams<{ id: string }>();
@@ -62,7 +76,7 @@ export const ProductDetail = () => {
   const [open, setOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -144,9 +158,7 @@ export const ProductDetail = () => {
       .filter((key) => key !== "image" && key !== "Per")
       .map((month) => ({
         value: month,
-        label: isNaN(Number(month))
-          ? month
-          : `${month} months`,
+        label: isNaN(Number(month)) ? month : `${month} months`,
       }));
   };
 
@@ -174,7 +186,7 @@ export const ProductDetail = () => {
             const errorMessage = `Unable to retrieve your location: ${error.message}`;
             setLocationError(errorMessage);
             reject(errorMessage);
-          }
+          },
         );
       }
     });
@@ -203,8 +215,8 @@ export const ProductDetail = () => {
 
     setIsSubmitting(true);
 
-    const telegramBotToken = "7925171133:AAHpqH3i9OE0sDKHGiW_EiKHYk7HpCcgKLI";
-    const telegramChatId = "YOUR_CHAT_ID"; // ⚠️ Replace with your actual Chat ID
+    const telegramBotToken = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
+    const telegramChatId = "5831969325";
 
     let locationText = "Location not provided";
     try {
@@ -233,15 +245,18 @@ export const ProductDetail = () => {
     `;
 
     try {
-      const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: telegramChatId,
-          text: message,
-          parse_mode: "Markdown",
-        }),
-      });
+      const response = await fetch(
+        `https://api.telegram.org/bot${telegramBotToken}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: telegramChatId,
+            text: message,
+            parse_mode: "Markdown",
+          }),
+        },
+      );
 
       if (response.ok) {
         toast({
@@ -256,7 +271,8 @@ export const ProductDetail = () => {
     } catch (error) {
       toast({
         title: "Submission Failed",
-        description: "There was an error sending your request. Please try again.",
+        description:
+          "There was an error sending your request. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -270,13 +286,12 @@ export const ProductDetail = () => {
         <Card className="overflow-hidden shadow-lg bg-white border border-gray-100 rounded-2xl">
           <CardContent className="p-8">
             <div className="grid md:grid-cols-2 gap-10">
-              
               {/* Left Column - Product Image */}
               <div className="relative overflow-hidden rounded-xl bg-gray-50 flex items-center justify-center p-8 border border-gray-100">
                 <div
                   className={cn(
                     "transition-transform duration-500 ease-out",
-                    isImageZoomed ? "scale-110" : "scale-100"
+                    isImageZoomed ? "scale-110" : "scale-100",
                   )}
                   onMouseEnter={() => handleImageHover(true)}
                   onMouseLeave={() => handleImageHover(false)}
@@ -303,7 +318,9 @@ export const ProductDetail = () => {
                   {!selectedMonth && !isGeyser && (
                     <p className="text-2xl font-bold text-gray-900 mt-2">
                       Starting from ₹{getMinimumPrice()}
-                      <span className="text-sm text-gray-500 font-medium ml-2">/ month</span>
+                      <span className="text-sm text-gray-500 font-medium ml-2">
+                        / month
+                      </span>
                     </p>
                   )}
                 </div>
@@ -312,7 +329,9 @@ export const ProductDetail = () => {
                   <div className="space-y-6">
                     <div className="grid grid-cols-2 gap-5">
                       <div className="flex flex-col space-y-2">
-                        <label className="text-sm font-bold text-gray-700">Duration</label>
+                        <label className="text-sm font-bold text-gray-700">
+                          Duration
+                        </label>
                         <Select
                           value={selectedMonth}
                           onValueChange={handleMonthChange}
@@ -331,9 +350,11 @@ export const ProductDetail = () => {
                       </div>
 
                       <div className="flex flex-col space-y-2">
-                        <label className="text-sm font-bold text-gray-700">Quantity</label>
+                        <label className="text-sm font-bold text-gray-700">
+                          Quantity
+                        </label>
                         <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden h-12 shadow-sm">
-                          <button 
+                          <button
                             onClick={() => handleQuantityChange(quantity - 1)}
                             className="w-12 h-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-gray-600 border-r border-gray-200 transition-colors"
                           >
@@ -342,7 +363,7 @@ export const ProductDetail = () => {
                           <div className="flex-1 h-full flex items-center justify-center font-bold text-gray-900 bg-white">
                             {quantity}
                           </div>
-                          <button 
+                          <button
                             onClick={() => handleQuantityChange(quantity + 1)}
                             className="w-12 h-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center text-gray-600 border-l border-gray-200 transition-colors"
                           >
@@ -353,7 +374,9 @@ export const ProductDetail = () => {
                     </div>
 
                     <div className="flex flex-col space-y-2">
-                      <label className="text-sm font-bold text-gray-700">Delivery Date</label>
+                      <label className="text-sm font-bold text-gray-700">
+                        Delivery Date
+                      </label>
                       <Popover open={open} onOpenChange={setOpen}>
                         <PopoverTrigger asChild>
                           <Button
@@ -385,13 +408,17 @@ export const ProductDetail = () => {
                     {pricePerMonth > 0 && (
                       <div className="bg-blue-50/50 p-5 rounded-xl space-y-3 border border-blue-100">
                         <div className="flex justify-between items-center">
-                          <p className="text-gray-600 font-medium">Total Price:</p>
+                          <p className="text-gray-600 font-medium">
+                            Total Price:
+                          </p>
                           <p className="text-2xl font-extrabold text-[#0416c7]">
                             ₹{totalPrice}
                           </p>
                         </div>
                         <div className="flex justify-between items-center pt-3 border-t border-blue-100/50">
-                          <p className="text-gray-600 font-medium">Security Deposit:</p>
+                          <p className="text-gray-600 font-medium">
+                            Security Deposit:
+                          </p>
                           <p className="text-lg font-bold text-gray-800">
                             {getSecurityDeposit()}{" "}
                             <span className="text-xs font-normal text-gray-500 ml-1">
@@ -408,7 +435,8 @@ export const ProductDetail = () => {
                           if (!selectedMonth || !deliveryDate) {
                             toast({
                               title: "Missing Selections",
-                              description: "Please select a duration and delivery date to continue.",
+                              description:
+                                "Please select a duration and delivery date to continue.",
                               variant: "destructive",
                             });
                             return;
@@ -428,12 +456,17 @@ export const ProductDetail = () => {
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       This product is available for maintenance service only.
-                      Please contact us directly to schedule a maintenance visit.
+                      Please contact us directly to schedule a maintenance
+                      visit.
                     </p>
                     <Button
                       onClick={() => {
-                        const message = "Hi, I would like to request maintenance service for a geyser.";
-                        window.open(`https://wa.me/917050068050?text=${encodeURIComponent(message)}`, "_blank");
+                        const message =
+                          "Hi, I would like to request maintenance service for a geyser.";
+                        window.open(
+                          `https://wa.me/917050068050?text=${encodeURIComponent(message)}`,
+                          "_blank",
+                        );
                       }}
                       className="w-full h-14 text-lg font-bold bg-[#0416c7] hover:bg-blue-800 text-white rounded-xl shadow-md"
                     >
@@ -469,22 +502,34 @@ export const ProductDetail = () => {
                         <div className="bg-yellow-50 text-yellow-500 p-3 rounded-xl mb-3">
                           <Star className="w-6 h-6 fill-current" />
                         </div>
-                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Star Rating</h3>
-                        <p className="text-sm font-bold text-gray-900">{product.description.starRating}</p>
+                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">
+                          Star Rating
+                        </h3>
+                        <p className="text-sm font-bold text-gray-900">
+                          {product.description.starRating}
+                        </p>
                       </div>
                       <div className="bg-white border border-gray-200 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-start">
                         <div className="bg-green-50 text-green-600 p-3 rounded-xl mb-3">
                           <BadgeCheck className="w-6 h-6" />
                         </div>
-                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Condition</h3>
-                        <p className="text-sm font-bold text-gray-900">{product.description.condition}</p>
+                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">
+                          Condition
+                        </h3>
+                        <p className="text-sm font-bold text-gray-900">
+                          {product.description.condition}
+                        </p>
                       </div>
                       <div className="bg-white border border-gray-200 p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-start">
                         <div className="bg-[#0416c7]/5 text-[#0416c7] p-3 rounded-xl mb-3">
                           <Tag className="w-6 h-6" />
                         </div>
-                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Brand</h3>
-                        <p className="text-sm font-bold text-gray-900">{product.description.brand}</p>
+                        <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">
+                          Brand
+                        </h3>
+                        <p className="text-sm font-bold text-gray-900">
+                          {product.description.brand}
+                        </p>
                       </div>
                     </div>
                   </AccordionContent>
@@ -500,16 +545,26 @@ export const ProductDetail = () => {
                       <div className="flex gap-4">
                         <CreditCard className="w-6 h-6 text-[#0416c7] shrink-0" />
                         <div>
-                          <h3 className="font-bold text-gray-900 mb-1">Payment & Mode</h3>
-                          <p className="text-sm text-gray-600 leading-relaxed">{product.description.payment}</p>
-                          <p className="text-sm text-gray-600 leading-relaxed mt-2 font-medium">Accepted: {product.description.paymentMode}</p>
+                          <h3 className="font-bold text-gray-900 mb-1">
+                            Payment & Mode
+                          </h3>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            {product.description.payment}
+                          </p>
+                          <p className="text-sm text-gray-600 leading-relaxed mt-2 font-medium">
+                            Accepted: {product.description.paymentMode}
+                          </p>
                         </div>
                       </div>
                       <div className="flex gap-4 pt-6 border-t border-gray-200">
                         <ShieldCheck className="w-6 h-6 text-green-600 shrink-0" />
                         <div>
-                          <h3 className="font-bold text-gray-900 mb-1">Security Deposit</h3>
-                          <p className="text-sm text-gray-600 leading-relaxed">{getSecurityDeposit()}</p>
+                          <h3 className="font-bold text-gray-900 mb-1">
+                            Security Deposit
+                          </h3>
+                          <p className="text-sm text-gray-600 leading-relaxed">
+                            {getSecurityDeposit()}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -546,7 +601,9 @@ export const ProductDetail = () => {
                       <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100 flex flex-col gap-3">
                         <Truck className="w-6 h-6 text-blue-600" />
                         <h3 className="font-bold text-gray-900">Delivery</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">{product.description.delivery}</p>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {product.description.delivery}
+                        </p>
                       </div>
                       <div className="bg-orange-50/50 p-6 rounded-2xl border border-orange-100 flex flex-col gap-3">
                         <Package className="w-6 h-6 text-orange-600" />
@@ -572,7 +629,9 @@ export const ProductDetail = () => {
                   <AccordionContent className="pt-6">
                     <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex gap-4 items-start">
                       <Wrench className="w-6 h-6 text-gray-700 shrink-0" />
-                      <p className="text-sm text-gray-600 leading-relaxed">{product.description.maintenance}</p>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {product.description.maintenance}
+                      </p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -603,7 +662,9 @@ export const ProductDetail = () => {
 
         {/* SIMILAR PRODUCTS */}
         <div className="mt-16 mb-10">
-          <h2 className="text-2xl font-extrabold mb-8 text-gray-900 tracking-tight">Similar Products</h2>
+          <h2 className="text-2xl font-extrabold mb-8 text-gray-900 tracking-tight">
+            Similar Products
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {similarProducts.map(([productId, similarProduct]) => (
               <Link key={productId} to={`/product/${productId}/variants`}>
@@ -631,9 +692,11 @@ export const ProductDetail = () => {
       <Dialog open={isPopupOpen} onOpenChange={setIsPopupOpen}>
         <DialogContent className="sm:max-w-md rounded-2xl p-6">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-gray-900">Complete Order</DialogTitle>
+            <DialogTitle className="text-2xl font-bold text-gray-900">
+              Complete Order
+            </DialogTitle>
           </DialogHeader>
-          
+
           <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100 my-4">
             <p className="text-sm text-gray-600 font-medium">Checkout Total:</p>
             <p className="text-2xl font-bold text-[#0416c7]">₹{totalPrice}</p>
@@ -671,10 +734,15 @@ export const ProductDetail = () => {
               }
               className="h-12 rounded-lg border-gray-300 focus:ring-[#0416c7]"
             />
-            
+
             <div className="text-xs text-gray-500 bg-gray-50 p-3 rounded-lg border border-gray-200">
-              <p className="font-semibold text-gray-700 mb-1">📍 Location Access</p>
-              <p>We'll request your location upon submission to ensure accurate and faster delivery service.</p>
+              <p className="font-semibold text-gray-700 mb-1">
+                📍 Location Access
+              </p>
+              <p>
+                We'll request your location upon submission to ensure accurate
+                and faster delivery service.
+              </p>
             </div>
 
             <Button
@@ -682,7 +750,9 @@ export const ProductDetail = () => {
               disabled={isSubmitting}
               className="w-full h-14 text-lg font-bold bg-[#0416c7] hover:bg-blue-800 text-white rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-4"
             >
-              {isSubmitting ? "Sending Request..." : (
+              {isSubmitting ? (
+                "Sending Request..."
+              ) : (
                 <>
                   <Send className="w-5 h-5" /> Confirm & Send Request
                 </>
