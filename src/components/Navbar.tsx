@@ -12,7 +12,7 @@ export const Navbar = () => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY && currentScrollY > 50) {
+    if (currentScrollY > lastScrollY && currentScrollY > 60) {
       setIsVisible(false);
     } else {
       setIsVisible(true);
@@ -22,9 +22,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   const navLinks = [
@@ -38,88 +36,89 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 font-mono w-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 backdrop-blur-sm z-50 shadow-lg transition-transform duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
+      }
+      bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364]
+      backdrop-blur-md border-b border-white/10 shadow-lg`}
     >
-      <div className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="flex items-center hover:opacity-90 transition-opacity"
-        >
+      <div className="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
+        {/* LOGO */}
+        <Link to="/" className="flex items-center">
           <img
             src={logo}
             alt="Smart Eager Logo"
-            className="h-20 md:h-20 drop-shadow-lg"
+            className="h-14 md:h-16 object-contain drop-shadow"
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+        {/* DESKTOP MENU */}
+        <div className="hidden lg:flex items-center gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="px-3 xl:px-4 py-2 text-sm xl:text-base text-white font-medium hover:bg-white/20 rounded-lg transition-all duration-200 hover:scale-105"
+              className="px-4 py-2 text-sm font-medium text-white rounded-full
+              hover:bg-white/20 transition-all duration-200"
             >
               {link.label}
             </Link>
           ))}
 
-          {/* Phone Number */}
+          {/* PHONE */}
           <Link
             to="tel:+917419011364"
-            className="flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-base text-white font-semibold hover:bg-white/20 rounded-lg transition-all duration-200 border border-white/30"
+            className="ml-2 flex items-center gap-2 px-4 py-2 text-sm font-semibold
+            text-white border border-white/30 rounded-full hover:bg-white/20 transition"
           >
             <Phone className="h-4 w-4" />
-            <span>+91 7419011364</span>
+            +91 7419011364
           </Link>
 
-          {/* WhatsApp Button */}
+          {/* WHATSAPP */}
           <Link
             to="https://wa.me/917419011364"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2">
-              <MessageCircle className="h-4 w-4" />
+            <Button
+              className="ml-2 rounded-full bg-white text-[#203a43]
+              hover:bg-gray-100 font-semibold px-5 shadow-md"
+            >
+              <MessageCircle className="h-4 w-4 mr-2" />
               WhatsApp
             </Button>
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center">
+        {/* MOBILE MENU */}
+        <div className="lg:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="bg-white hover:bg-gray-100 border-0 shadow-md"
-              >
-                <Menu className="h-6 w-6 text-blue-600" />
+              <Button size="icon" className="bg-white text-[#203a43] shadow-md">
+                <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
 
-            <SheetContent className="bg-gradient-to-b from-blue-700 to-blue-800 border-l-0">
-              <div className="flex flex-col space-y-1 mt-8">
+            <SheetContent className="bg-gradient-to-b from-[#0f2027] to-[#2c5364] border-l-0">
+              <div className="flex flex-col mt-10 space-y-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
-                    className="text-white hover:bg-white/20 font-medium px-4 py-3 rounded-lg transition-all text-lg"
+                    className="text-white px-5 py-3 rounded-lg text-lg
+                    hover:bg-white/20 transition"
                     onClick={() => setIsSheetOpen(false)}
                   >
                     {link.label}
                   </Link>
                 ))}
 
-                {/* Mobile Contact Section */}
-                <div className="border-t border-white/20 pt-6 mt-6 space-y-3">
+                {/* MOBILE CONTACT */}
+                <div className="border-t border-white/20 pt-6 mt-6 space-y-4">
                   <Link
                     to="tel:+917419011364"
-                    className="flex items-center gap-3 text-white hover:bg-white/20 font-semibold px-4 py-3 rounded-lg transition-all"
+                    className="flex items-center gap-3 text-white px-5 py-3 rounded-lg hover:bg-white/20"
                     onClick={() => setIsSheetOpen(false)}
                   >
                     <Phone className="h-5 w-5" />
@@ -132,8 +131,8 @@ export const Navbar = () => {
                     rel="noopener noreferrer"
                     onClick={() => setIsSheetOpen(false)}
                   >
-                    <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold shadow-md flex items-center justify-center gap-2 py-6">
-                      <MessageCircle className="h-5 w-5" />
+                    <Button className="w-full bg-white text-[#203a43] font-semibold py-6 rounded-lg">
+                      <MessageCircle className="h-5 w-5 mr-2" />
                       WhatsApp
                     </Button>
                   </Link>
