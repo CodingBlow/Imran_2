@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import bgImage from "../images/Contact.png";
 
-const TELEGRAM_BOT_TOKEN = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
-const TELEGRAM_CHAT_ID = "5831969325";
+const TELEGRAM_BOT_TOKEN = "8341967588:AAHeP4p68tSdpwpLLCC4TIrODgRNPGXePnI";
+const TELEGRAM_CHAT_ID = "8530119215";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({

@@ -26,8 +26,8 @@ import gasCharging from "../images/Gas.png";
 import vrvVrf from "../images/vrv.png";
 import Payment from "../images/Payment.png";
 
-const TELEGRAM_BOT_TOKEN = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
-const TELEGRAM_CHAT_ID = "5831969325";
+const TELEGRAM_BOT_TOKEN = "8341967588:AAHeP4p68tSdpwpLLCC4TIrODgRNPGXePnI";
+const TELEGRAM_CHAT_ID = "8530119215";
 
 type PriceTier = {
   label: string;

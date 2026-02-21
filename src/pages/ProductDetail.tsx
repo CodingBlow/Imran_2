@@ -215,8 +215,8 @@ export const ProductDetail = () => {
 
     setIsSubmitting(true);
 
-    const telegramBotToken = "8231210727:AAE-cUG2qQJR4a9A3qy8SJlljScvfL7X4PQ";
-    const telegramChatId = "5831969325";
+    const telegramBotToken = "8341967588:AAHeP4p68tSdpwpLLCC4TIrODgRNPGXePnI";
+    const telegramChatId = "8530119215";
 
     let locationText = "Location not provided";
     try {
